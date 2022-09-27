@@ -1,0 +1,13 @@
+.film__list {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-left: auto;
+    margin-top: auto;
+}
+
+.film__card {
+    display: block;
+    margin-top: 10px;
+    margin-left: 10px;
+}
