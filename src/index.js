@@ -5,6 +5,8 @@ import renderFilmCard from './renderCard';
 
 const filmsLoadService = new FilmsLoadService();
 
+// запит на отримання даних з сервкра та виклик функції рендера
+
 getFilms()
 async function getFilms() {
     try {
