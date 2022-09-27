@@ -1,5 +1,7 @@
 @import '~node_modules/modern-normalize/modern-normalize.css';
-
+html {
+  scroll-behavior: smooth;
+}
 body {
   color: $black-color;
   background-color: $white-color;
