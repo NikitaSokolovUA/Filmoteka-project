@@ -1,0 +1,27 @@
+.icon {
+  width: 24px;
+  height: 24px;
+  fill: $white-color;
+  animation: heartBeat infinite;
+
+  &:hover,
+  &:focus {
+    fill: $accent-color;
+  }
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.header-title {
+  display: none;
+  @media screen and (min-width: 768px) {
+    display: block;
+    margin-left: 10px;
+    font-size: 30px;
+    font-weight: 500;
+    line-height: 1.17;
+  }
+}
