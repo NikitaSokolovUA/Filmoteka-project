@@ -6,7 +6,7 @@ Notiflix.Notify.init({
   opacity: 1,
 });
 
-// *********** функции сохранения и считывания масива просмотренных фильмов из local storage
+// ********** функции сохранения и считывания масива просмотренных фильмов из local storage
 const saveList = (key, value, typeBtn) => {
   try {
     const serializedState = JSON.stringify(value);

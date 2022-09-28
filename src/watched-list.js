@@ -27,12 +27,11 @@ export function addWatchedBtnClick(evt) {
 export function isMovieOnList(movieId) {
   const items = loadList(watchedKeyStorage);
   const index = items.findIndex(item => item.id === movieId);
-  if (index == -1) {
-    return 'add';
-  } else return 'remove';
+  return index == -1 ? 'add' : 'remove';
 }
 
 // функція-обробник події кліку "watched", повертає масив об'єктів фільмів з переліку користувача
+// і рендерить .
 export function watchedBtnClick() {
   const items = loadList(watchedKeyStorage);
   renderFilmCard(items);
