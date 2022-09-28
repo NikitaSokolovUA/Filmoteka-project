@@ -65,3 +65,4 @@ function removeItemFromList(movieId) {
   items.splice(index, 1);
   saveList(watchedKeyStorage, items);
 }
+export { watchedKeyStorage };
