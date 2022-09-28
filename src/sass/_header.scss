@@ -1,0 +1,123 @@
+.header-container {
+  padding: 40px 20px 40px 20px;
+  @media screen and (min-width: 768px) {
+    padding: 40px 32px 80px 32px;
+  }
+}
+
+.icon-search {
+  width: 12px;
+  height: 12px;
+}
+.btn-search {
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid $white-color;
+  cursor: pointer;
+  color: $white-color;
+  outline: none;
+}
+
+.header {
+  color: $white-color;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-color: $black-color;
+
+  @media screen and (max-width: 767px) {
+    background-image: url(../images/header-mobile.png);
+    @media (min-device-pixel-ratio: 2),
+      (min-resolution: 192dpi),
+      (min-resolution: 2dppx) {
+      background-image: url(../images/header-mobile@2x.png);
+    }
+  }
+
+  @media screen and (min-width: 768px) {
+    background-image: linear-gradient(
+        to right,
+        rgba(25, 28, 38, 0.2),
+        rgba(25, 28, 38, 0.2)
+      ),
+      url(../images/header-tablet.png);
+    @media (min-device-pixel-ratio: 2),
+      (min-resolution: 192dpi),
+      (min-resolution: 2dppx) {
+      background-image: linear-gradient(
+          to right,
+          rgba(25, 28, 38, 0.2),
+          rgba(25, 28, 38, 0.2)
+        ),
+        url(../images/header-tablet@2x.png);
+    }
+  }
+
+  @media screen and (min-width: 1200px) {
+    background-image: linear-gradient(
+        to right,
+        rgba(25, 28, 38, 0.2),
+        rgba(25, 28, 38, 0.2)
+      ),
+      url(../images/header-desctop.png);
+    @media (min-device-pixel-ratio: 2),
+      (min-resolution: 192dpi),
+      (min-resolution: 2dppx) {
+      background-image: linear-gradient(
+          to right,
+          rgba(25, 28, 38, 0.2),
+          rgba(25, 28, 38, 0.2)
+        ),
+        url(../images/header-desctop@2x.png);
+    }
+  }
+}
+
+.header-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 56px;
+  @media screen and (min-width: 768px) {
+    margin-bottom: 40px;
+  }
+}
+
+.menu {
+  display: flex;
+  padding: 0;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.17;
+  text-transform: uppercase;
+}
+.menu-list {
+  margin-right: 40px;
+}
+
+.form-field {
+  display: flex;
+  justify-content: center;
+}
+
+.input-field {
+  width: 100%;
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid $white-color;
+  cursor: pointer;
+  color: $white-color;
+  outline: none;
+
+  @media screen and (min-width: 768px) {
+    max-width: 324px;
+  }
+
+  @media screen and (min-width: 1200px) {
+    max-width: 382px;
+  }
+
+  ::placeholder {
+    color: $white-color;
+  }
+}
