@@ -1,5 +1,5 @@
-// const axigit addos = require('axios');
-import axios from "axios";
+const axios = require('axios');
+// import axios from "axios";
 
 const TREND_FILMS_URL = 'https://api.themoviedb.org/3/trending/movie/week?';
 const SEARCH_FILMS_URL = 'https://api.themoviedb.org/3/search/movie?';
