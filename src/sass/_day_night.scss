@@ -1,0 +1,48 @@
+// -- Тема день/ночь --
+body {
+  &.night-mode {
+    background-color: $night-background-color;
+    .tumbler {
+      transform: translateX(calc(100%));
+    }
+  }
+}
+
+.footer {
+  &.night-mode {
+    background-color: $night-footer-color;
+  }
+}
+
+.tumbler-wrapper {
+  position: absolute;
+  margin-left: 90vw;
+  margin-top: 10px;
+  width: 50px;
+  height: 30px;
+  background-color: $black-color;
+  border-radius: 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 6px;
+  cursor: pointer;
+
+  @media screen and (max-width: 767px) {
+    margin-left: 80vw;
+  }
+}
+
+.tumbler {
+  position: absolute;
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  background-color: $white-color;
+  transition: transform 0.5s, background-color 0.5s;
+  will-change: transform;
+}
+
+.icon-theme {
+  fill: #ffeb3b;
+}
