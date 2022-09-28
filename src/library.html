@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Filmoteka</title>
+    <link rel="stylesheet" href="./sass/index.scss" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&family=Roboto:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
+    <script type="module" src="./index.js"></script>
+  </head>
+  <body>
+    <a id="button" class="button-up"></a>
+    <header class="header">
+      <div class="container header-container">
+        <div class="header-nav">
+          <a class="logo link" href="/src/index.html"
+            ><svg class="icon animate__animated">
+              <use href="./images/symbol-defs.svg#icon-film"></use>
+            </svg>
+            <span class="header-title">Filmoteka</span></a
+          >
+
+          <nav>
+            <ul class="menu">
+              <li class="list menu-list">
+                <a class="link" href="./index.html">home</a>
+              </li>
+              <li>
+                <a class="link link-active" href="">my library</a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+
+        <div class="list-btn">
+          <button class="lib-btn">WATCHED</button>
+          <button class="lib-btn">QUEUE</button>
+        </div>
+      </div>
+    </header>
+
+    <script type="module" src="./day_night.js"></script>
+    <script type="module" src="./button-up.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  </body>
+</html>
