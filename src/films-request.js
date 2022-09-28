@@ -18,7 +18,7 @@ export default class FilmsLoadService {
     });
 
     const response = await axios(`${TREND_FILMS_URL}${searchParams}`);
-    return response.data;
+    return response;
   }
 
   async requestFilms() {
