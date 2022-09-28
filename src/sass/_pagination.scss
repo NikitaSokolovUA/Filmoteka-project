@@ -40,13 +40,13 @@
 
 .tui-pagination .tui-is-selected, .tui-pagination strong {
     color: #fff;
-    background: #4b96e6;
-    border-color: #4b96e6;
+    background: $accent-color;
+    border-color: $accent-color;
     cursor: default;
 }
 
 .tui-pagination .tui-is-selected:hover {
-    background-color: #4b96e6;
+    background-color: $accent-color;
 }
 
 .tui-pagination .tui-first-child.tui-is-selected, .tui-pagination strong.tui-first-child {
@@ -66,7 +66,7 @@
 }
 
 .tui-pagination .tui-last-child.tui-is-selected {
-    border-right: 1px solid #4b96e6
+    border-right: 1px solid $accent-color
 }
 
 .tui-pagination .tui-first, .tui-pagination .tui-prev, .tui-pagination .tui-next, .tui-pagination .tui-last, .tui-pagination .tui-prev-is-ellip, .tui-pagination .tui-next-is-ellip {
