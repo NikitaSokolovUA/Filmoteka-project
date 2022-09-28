@@ -1,0 +1,11 @@
+.film__list {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-top: 60px;
+}
+
+.film__card {
+    display: block;
+}
