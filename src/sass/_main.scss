@@ -10,7 +10,7 @@
          margin-top: 60px;
     }
     @media screen and (min-width:1280px) {
-        gap: 15px;
+        gap: 16px;
     }
 }
 
@@ -18,13 +18,16 @@
     display: block;
     cursor: pointer;
     width: 280px;
-        
+
             @media screen and (min-width:768px) {
-width: 336px;
+    width: 336px;
             }
         
             @media screen and (min-width:1280px) {
-width: 395px;
+            width: 394px;
+            &:not(:nth-child(-n + 3)){
+                margin-top: 16px;
+            }
             }
 }
 
@@ -37,17 +40,16 @@ width: 395px;
 }
 
 .film__title {
+    font-size: 12px;
     font-weight: 500;
     text-transform: uppercase;
     
     color: #000000;
 
     @media screen and (max-width:320px) {
-        font-size: 12px;
         line-height: 1.17;
     }
     @media screen and (min-width:768px) {
-        font-size: 12px;
         line-height: 1.33;
     }
         
@@ -63,10 +65,10 @@ width: 395px;
     line-height: 1.33;
     color: #FF6B08;
 
-    @media screen and (max-width:320px) {
-        font-size: 12px;
-        line-height: 1.33;
-    }
+    // @media screen and (max-width:320px) {
+    //     font-size: 12px;
+    //     line-height: 1.33;
+    // }
     
     @media screen and (min-width:1280px) {
         font-size: 20px;
