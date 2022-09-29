@@ -11,7 +11,7 @@ export function addWatchedBtnListener() {
   watchedBtnEl = document.querySelector('.add-watchedbtn-js');
   watchedBtnEl.addEventListener('click', addWatchedBtnClick);
 }
-// фукція видаляє слухача з "add to watched"
+// фукція видаляє слухача з кнопки "add to watched"
 export function removeWatchedBtnListener() {
   watchedBtnEl.removeEventListener('click', addWatchedBtnClick);
 }
