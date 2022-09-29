@@ -19,14 +19,14 @@ export default function renderModalCard(film) {
           <li class="film__item">
             <p class="film__details">Vote / Votes</p>
             <p class="film__value">
-              <span class="film__rating--orange">${vote_average}</span>
+              <span class="film__rating--orange">${vote_average.toFixed(1)}</span>
               <span class="film__rating--slash"> / </span>
               <span class="vote-count">${vote_count}</span>
             </p>
           </li>
           <li class="film__item">
             <p class="film__details">Popularity</p>
-            <p class="film__value">${popularity}</p>
+            <p class="film__value">${popularity.toFixed(1)}</p>
           </li>
           <li class="film__item">
             <p class="film__details">Original title</p>
