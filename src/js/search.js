@@ -1,7 +1,7 @@
 import FilmsLoadService from './films-request';
 import Notiflix from 'notiflix';
 import renderFilmCard from './renderCard';
-import FilmsPagination from './js/pagination';
+import FilmsPagination from './pagination';
 
 const searchForm = document.getElementById('search-form');
 const films = document.querySelector('.film__list');
@@ -27,7 +27,8 @@ async function onSearch(event) {
   try {
     if (filmsResponse.total_results === 0) {
       Notiflix.Notify.failure('&#128561 Оh my god, what do you want?');
-      warningText.innerHTML = '';
+      warningText.innerHTML = 'Search result not successful. Enter the correct movie name and try again';
+      return
     }
 
     if (

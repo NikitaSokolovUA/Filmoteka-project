@@ -1,7 +1,7 @@
 import './sass/index.scss';
-import FilmsLoadService from './films-request';
-import renderFilmCard from './renderCard';
-import FilmsPagination from './pagination';
+import FilmsPagination from './js/pagination';
+import FilmsLoadService from './js/films-request';
+import renderFilmCard from './js/renderCard';
 
 const filmsLoadService = new FilmsLoadService();
 // запит на отримання даних з сервкра та виклик функції рендера
