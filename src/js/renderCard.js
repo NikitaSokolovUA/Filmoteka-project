@@ -15,9 +15,10 @@ export default async function renderFilmCard(films) {
   const markup = films
     .map(({ id, poster_path, title, genre_ids, release_date }) => {
       //  приведення дати до шаблону
-
-      const date = release_date.slice(0, 4);
-
+      let date = '';
+      if (release_date) {
+        date = release_date.slice(0, 4);
+      }
       //  перетворення id-жанрів у нормальні назви
 
       const genresFilm = genre_ids;
