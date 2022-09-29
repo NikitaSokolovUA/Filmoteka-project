@@ -1,6 +1,7 @@
 import FilmsLoadService from './films-request';
 import Notiflix from 'notiflix';
 import renderFilmCard from './renderCard';
+import FilmsPagination from './pagination';
 
 const searchForm = document.getElementById('search-form');
 const films = document.querySelector('.film__list');
@@ -39,6 +40,15 @@ async function onSearch(event) {
       );
       searchForm.searchQuery.value = '';
       clearFilms();
+
+      //************Пагинация************
+      const paginator = new FilmsPagination(
+        filmsSearch,
+        filmsResponse.total_results
+      );
+      paginator.pagination.on('afterMove', paginatePage);
+      //************
+
       renderFilmCard(filmsResponse.results);
     }
 
@@ -56,4 +66,13 @@ async function onSearch(event) {
 //************Function clearFilms****************/////
 function clearFilms() {
   films.innerHTML = '';
+}
+
+//************Function paginatePage****************/////
+async function paginatePage(event) {
+  const currentPage = event.page;
+  filmsSearch.page = currentPage;
+  clearFilms();
+  const responce = await filmsSearch.requestFilms();
+  renderFilmCard(responce.results);
 }

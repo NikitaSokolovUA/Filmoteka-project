@@ -17,6 +17,7 @@ export default class FilmsLoadService {
   async requestTrendFilms() {
     const searchParams = new URLSearchParams({
       api_key: KEY,
+      page: this.page,
     });
 
     const response = await axios(`${TREND_FILMS_URL}${searchParams}`);
