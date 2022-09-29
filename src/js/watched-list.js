@@ -16,7 +16,7 @@ export function removeWatchedBtnListener() {
   watchedBtnEl.removeEventListener('click', addWatchedBtnClick);
 }
 
-// функція-обробник події кліку "add to watched"
+// функція-обробник події кліку на "add to watched"
 // кнопка повинна мати атрібути data-id з айді картки фільму , та data-action з "add" або "remove"
 function addWatchedBtnClick(evt) {
   const idData = evt.target.dataset.id;
