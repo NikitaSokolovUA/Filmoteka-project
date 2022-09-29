@@ -1,7 +1,11 @@
+import FilmsLoadService from './films-request';
+import renderModalCard from '../templates/renderModalCard';
+
 const refs = {
     modal: document.querySelector('[data-modal]'),
     closeModalBtn: document.querySelector("[data-modal-close]"),
-    listOfFilm: document.querySelector('.film__list')
+    listOfFilm: document.querySelector('.film__list'),
+    card: document.querySelector('.modal__container')
 }
 
 
@@ -11,14 +15,24 @@ refs.modal.addEventListener('click', onClickBackdropModalClose)
 
 
 
-function onClickFilm(e) { 
-    const chosenFilm = e.target.parentNode.parentNode
+async function onClickFilm(e) { 
+  const chosenFilm = e.target.parentNode.parentNode
+  
+  fls = new FilmsLoadService(); 
+  fls.id = chosenFilm.id; 
+  const data = await fls.requestFilmDetails(); 
 
+  console.log(renderModalCard(data)); 
+
+  
     
     if (chosenFilm.nodeName !== "LI") {
         return
     }
 
+  
+  
+    refs.card.innerHTML = renderModalCard(data);
     onOpenModal()
 }
 
@@ -30,6 +44,7 @@ function onOpenModal() {
   function onCloseModal() {
     window.removeEventListener('keydown',inKeyDownEscModalClose)
     refs.modal.classList.toggle("backdrop--is-hidden");
+    clearModalCard()
 }
   
  function onClickBackdropModalClose(event) {
