@@ -1,6 +1,6 @@
 import './sass/index.scss';
-import FilmsLoadService from "./films-request";
-import renderFilmCard from './renderCard';
+import FilmsLoadService from "./js/films-request";
+import renderFilmCard from './js/renderCard'
 
 const filmsLoadService = new FilmsLoadService();
 
