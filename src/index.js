@@ -4,7 +4,6 @@ import renderFilmCard from './js/renderCard'
 import { arrayFromServer } from './API/api';
 
 const filmsLoadService = new FilmsLoadService();
-
 // запит на отримання даних з сервкра та виклик функції рендера
 
 getFilms();
