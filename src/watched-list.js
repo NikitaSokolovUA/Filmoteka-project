@@ -7,9 +7,19 @@ const storageListArray = [];
 const moviesLoad = new FilmsLoadService();
 const watchedKeyStorage = 'watchedKey';
 
+// функція додає слухача на кнопку "add to watched"
+export function addWatchedBtnListener() {
+  const watchedBtnEl = document.querySelector('.add-watchedbtn-js');
+  watchedBtnEl.addEventListener('click', addWatchedBtnClick);
+}
+// фукція видаляє слухача з "add to watched"
+export function removeWatchedBtnListener() {
+  watchedBtnEl.removeEventListener('click', addWatchedBtnClick);
+}
+
 // функція-обробник події кліку "add to watched"
 // кнопка повинна мати атрібути data-id з айді картки фільму , та data-action з "add" або "remove"
-export function addWatchedBtnClick(evt) {
+function addWatchedBtnClick(evt) {
   const idData = evt.target.dataset.id;
   const action = evt.target.dataset.action;
   switch (action) {
