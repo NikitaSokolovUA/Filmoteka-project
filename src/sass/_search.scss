@@ -1,0 +1,20 @@
+// --warning text for search--
+.warning-container {
+  position: relative;
+}
+.warning {
+  position: absolute;
+  color: $liner-color;
+  margin-top: 16px;
+  line-height: 16px;
+
+  @media screen and (min-width: 768px) {
+    margin-top: 20px;
+    left: 130px;
+  }
+  @media screen and (min-width: 1280px) {
+    margin-top: 20px;
+    left: 380px;
+  }
+}
+//
