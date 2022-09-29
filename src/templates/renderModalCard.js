@@ -1,12 +1,19 @@
-
 const BASE_URL = 'https://image.tmdb.org/t/p/w500';
 
 export default function renderModalCard(film) {
+  const {
+    id,
+    genres,
+    vote_average,
+    vote_count,
+    poster_path,
+    popularity,
+    original_title,
+    overview,
+    title,
+  } = film;
 
-    const {id, genres , vote_average, vote_count, poster_path, popularity, original_title, overview, title} = film
-  
-  
-    return `<div class="modal__image-container" id='${id}'>
+  return `<div class="modal__image-container" id='${id}'>
         <img
           class="modal__image"
           src="${BASE_URL}${poster_path}"
@@ -19,7 +26,9 @@ export default function renderModalCard(film) {
           <li class="film__item">
             <p class="film__details">Vote / Votes</p>
             <p class="film__value">
-              <span class="film__rating--orange">${vote_average.toFixed(1)}</span>
+              <span class="film__rating--orange">${vote_average.toFixed(
+                1
+              )}</span>
               <span class="film__rating--slash"> / </span>
               <span class="vote-count">${vote_count}</span>
             </p>
@@ -43,12 +52,12 @@ export default function renderModalCard(film) {
             ${overview}
           </p>
           <div class="film-btn__wrapper">
-            <button class="film-button" type="button">add to Watched</button>
+            <button class="film-button add-watchedbtn-js" type="button" data-id="${id}" data-action="add" >add to Watched</button>
             <button class="film-button" type="button">add to queue</button>
           </div>
-        </div>`
+        </div>`;
 }
 
 function ganresString(id) {
-  return id.map(({name}) => name).join(', ')
+  return id.map(({ name }) => name).join(', ');
 }
