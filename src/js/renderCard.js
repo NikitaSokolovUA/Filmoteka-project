@@ -22,7 +22,7 @@ export default async function renderFilmCard(films) {
       //  перетворення id-жанрів у нормальні назви
 
       const genresFilm = genre_ids;
-      let addGenresArray = [];
+      const addGenresArray = [];
       genresFilm.forEach(id => {
         getGenres.forEach(genre => {
           if (id === genre.id) {
@@ -62,3 +62,4 @@ export default async function renderFilmCard(films) {
 }
 
 
+ 
