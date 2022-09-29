@@ -17,16 +17,38 @@
   </head>
   <body>
     <a id="button" class="button-up"></a>
-    <include src="./partials/day_night.html"></include>
-    <include src="./partials/header.html"></include>
-    <include src="./partials/main.html"></include>
-    <include src="./partials/pagination.html"></include>
+    <header class="header-library">
+      <div class="container header-container">
+        <div class="header-nav">
+          <a class="logo link" href="/src/index.html"
+            ><svg class="icon animate__animated">
+              <use href="./images/symbol-defs.svg#icon-film"></use>
+            </svg>
+            <span class="header-title">Filmoteka</span></a
+          >
+
+          <nav>
+            <ul class="menu">
+              <li class="list menu-list">
+                <a class="link" href="./index.html">home</a>
+              </li>
+              <li>
+                <a class="link link-active" href="">my library</a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+
+        <div class="list-btn">
+          <button class="lib-btn">WATCHED</button>
+          <button class="lib-btn">QUEUE</button>
+        </div>
+      </div>
+    </header>
     <include src="./partials/footer.html"></include>
-    <include src="./partials/modal.html"></include>
+
     <script type="module" src="./js/day_night.js"></script>
-    <script type="module" src="./js/search.js"></script>
     <script type="module" src="./js/button-up.js"></script>
-    <script type="module" src="./js/modal.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
   </body>
 </html>
