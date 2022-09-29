@@ -15,7 +15,7 @@ export default function renderModalCard(film) {
       </div>
     <div class="film__info">
         <h2 class="film__title">${title}</h2>
-        <ul class="film__list">
+        <ul class="film-modal__list">
           <li class="film__item">
             <p class="film__details">Vote / Votes</p>
             <p class="film__value">
