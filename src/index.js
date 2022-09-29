@@ -1,6 +1,7 @@
 import './sass/index.scss';
 import FilmsLoadService from "./js/films-request";
 import renderFilmCard from './js/renderCard'
+import { arrayFromServer } from './API/api';
 
 const filmsLoadService = new FilmsLoadService();
 
@@ -9,10 +10,16 @@ const filmsLoadService = new FilmsLoadService();
 getFilms();
 async function getFilms() {
     try {
-        const responce = await filmsLoadService.requestTrendFilms();
+         const responce = await filmsLoadService.requestTrendFilms();
         renderFilmCard(responce.results);
+
+        const arr = responce.results
+        arr.map(film => arrayFromServer.push(film))
+        
     } catch (error) {
         console.log(error);
     }
 }
+
+
 

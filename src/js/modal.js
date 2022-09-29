@@ -1,3 +1,5 @@
+import renderModalCard from "../templates/renderModalCard";
+
 const refs = {
     modal: document.querySelector('[data-modal]'),
     closeModalBtn: document.querySelector("[data-modal-close]"),
@@ -17,9 +19,12 @@ function onClickFilm(e) {
     
     if (chosenFilm.nodeName !== "LI") {
         return
-    }
+  }
+  
+  console.log();
 
-    onOpenModal()
+  onOpenModal()
+  renderModalCard(chosenFilm.id)
 }
 
 function onOpenModal() {

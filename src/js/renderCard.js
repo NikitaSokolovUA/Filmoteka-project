@@ -4,11 +4,16 @@ const gallery = document.querySelector('.film__list');
 const BASE_URL = 'https://image.tmdb.org/t/p/w500';
 const filmsLoadService = new FilmsLoadService();
 
+
+
 export default async function renderFilmCard(films) {
   // отримання масиву id-жанрів разом з назвами
 
   const responceGenres = await filmsLoadService.requestGenres();
   const getGenres = await responceGenres.genres;
+
+
+  
 
   // рендер карточки фільма та створення фільмотеки
 
@@ -21,7 +26,7 @@ export default async function renderFilmCard(films) {
       //  перетворення id-жанрів у нормальні назви
 
       const genresFilm = genre_ids;
-      let addGenresArray = [];
+      const addGenresArray = [];
       genresFilm.forEach(id => {
         getGenres.forEach(genre => {
           if (id === genre.id) {
