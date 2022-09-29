@@ -6,10 +6,10 @@ import renderFilmCard from './renderCard';
 const storageListArray = [];
 const moviesLoad = new FilmsLoadService();
 const watchedKeyStorage = 'watchedKey';
-
+let watchedBtnEl;
 // функція додає слухача на кнопку "add to watched"
 export function addWatchedBtnListener() {
-  const watchedBtnEl = document.querySelector('.add-watchedbtn-js');
+  watchedBtnEl = document.querySelector('.add-watchedbtn-js');
   watchedBtnEl.addEventListener('click', addWatchedBtnClick);
 }
 // фукція видаляє слухача з "add to watched"
@@ -37,7 +37,7 @@ function addWatchedBtnClick(evt) {
 export function isMovieOnList(movieId) {
   const items = loadList(watchedKeyStorage);
   const index = items.findIndex(item => item.id === movieId);
-  return index == -1 ? 'add' : 'remove';
+  return index === -1 ? 'add' : 'remove';
 }
 
 // функція-обробник події кліку "watched", повертає масив об'єктів фільмів з переліку користувача
@@ -69,7 +69,7 @@ function removeItemFromList(movieId) {
   const items = loadList(watchedKeyStorage);
   const index = items.findIndex(item => item.id === movieId);
 
-  if (index == -1) {
+  if (index === -1) {
     return;
   }
   items.splice(index, 1);
