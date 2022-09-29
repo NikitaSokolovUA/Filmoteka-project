@@ -1,1 +1,1 @@
-export const arrayFromServer = [];
+export const arrayFromServer = []
