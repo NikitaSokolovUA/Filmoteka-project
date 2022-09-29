@@ -21,10 +21,7 @@ async function onClickFilm(e) {
   const fls = new FilmsLoadService(); 
   fls.id = chosenFilm.id; 
   const data = await fls.requestFilmDetails(); 
-
-  console.log(renderModalCard(data)); 
-
-  
+ 
     
     if (chosenFilm.nodeName !== "LI") {
         return
