@@ -18,7 +18,7 @@ refs.modal.addEventListener('click', onClickBackdropModalClose)
 async function onClickFilm(e) { 
   const chosenFilm = e.target.parentNode.parentNode
   
-  fls = new FilmsLoadService(); 
+  const fls = new FilmsLoadService(); 
   fls.id = chosenFilm.id; 
   const data = await fls.requestFilmDetails(); 
 
@@ -44,7 +44,6 @@ function onOpenModal() {
   function onCloseModal() {
     window.removeEventListener('keydown',inKeyDownEscModalClose)
     refs.modal.classList.toggle("backdrop--is-hidden");
-    clearModalCard()
 }
   
  function onClickBackdropModalClose(event) {
