@@ -45,4 +45,8 @@ export default async function renderFilmCard(films) {
     })
     .join('');
   gallery.insertAdjacentHTML('beforeend', markup);
+
+
 }
+
+
