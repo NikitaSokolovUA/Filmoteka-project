@@ -1,5 +1,5 @@
 import renderFilmCard from './renderCard';
-import {watchedKeyStorage} from './watched-list';
+import watchedKeyStorage from './watched-list';
 import FilmsPagination from './pagination';
 
 function loadWatchedFilms() {
