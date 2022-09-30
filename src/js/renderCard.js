@@ -59,10 +59,13 @@ function addIdToGanres(ids) {
   const parsedGanres = JSON.parse(getGenres)
   const addGenresArray = [];
 
+// <<<<<<< HEAD
+// =======
   if (ids.length === 0) {
     return 'Some Ganres'
   }
   
+// >>>>>>> main
 
   parsedGanres.map(ganre => {
      ids.map(id => {
