@@ -1,9 +1,5 @@
-import FilmsLoadService from './films-request';
-import renderModalCard from '../templates/renderModalCard';
-import {
-  addWatchedBtnListener,
-  removeWatchedBtnListener,
-} from './watched-list';
+import renderModalCard from '../templates/renderModalCard'
+// import defaultExport, * as name  from './modal'
 
 const refs = {
   modal: document.querySelector('[data-modal]'),
@@ -13,47 +9,47 @@ const refs = {
   body: document.querySelector('body')
 };
 
-
-refs.listOfFilm.addEventListener('click', onClickFilm);
+refs.listOfFilm.addEventListener('click', onClickFilmStorage);
 refs.closeModalBtn.addEventListener('click', onCloseModal);
 refs.modal.addEventListener('click', onClickBackdropModalClose);
 
-async function onClickFilm(e) {
+function onClickFilmStorage(e) {
   const chosenFilm = e.target.parentNode.parentNode;
 
-  const fls = new FilmsLoadService();
-  fls.id = chosenFilm.id;
-  const data = await fls.requestFilmDetails();
+  const films = localStorage.getItem('watchedKey')
+  const parseFilms = JSON.parse(films)
+  
+  const selectedFilm = parseFilms.find(film => film.id === Number(chosenFilm.id))
+  
+  refs.card.innerHTML = renderModalCard(selectedFilm);
+  onOpenModal();
 
   if (chosenFilm.nodeName !== 'LI') {
     return;
   }
-
-  refs.card.innerHTML = renderModalCard(data);
-  onOpenModal();
 }
 
-export default function onOpenModal() {
+function onOpenModal() {
   window.addEventListener('keydown', inKeyDownEscModalClose);
   refs.modal.classList.toggle('backdrop--is-hidden');
   refs.body.classList.toggle('modal-open');
-  addWatchedBtnListener();
+  // addWatchedBtnListener();
 }
 
-export default function onCloseModal() {
+function onCloseModal() {
   window.removeEventListener('keydown', inKeyDownEscModalClose);
   refs.modal.classList.toggle('backdrop--is-hidden');
   refs.body.classList.toggle('modal-open');
-  removeWatchedBtnListener();
+  // removeWatchedBtnListener();
 }
 
-export default function onClickBackdropModalClose(event) {
+function onClickBackdropModalClose(event) {
   if (event.target === event.currentTarget) {
     onCloseModal();
   }
 }
 
-export default function inKeyDownEscModalClose(event) {
+function inKeyDownEscModalClose(event) {
   const KEY_CODE_ESCAPE = 'Escape';
 
   if (event.code === KEY_CODE_ESCAPE) {
