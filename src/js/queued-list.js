@@ -85,6 +85,7 @@ function addItemToList(data) {
     saveList(queuedKeyStorage, items, true);
   }
 }
+
 // видаляємо з переліку
 function removeItemFromList(movieId) {
   const items = loadList(queuedKeyStorage);
