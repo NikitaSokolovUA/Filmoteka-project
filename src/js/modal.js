@@ -10,7 +10,9 @@ const refs = {
   closeModalBtn: document.querySelector('[data-modal-close]'),
   listOfFilm: document.querySelector('.film__list'),
   card: document.querySelector('.modal__container'),
+  body: document.querySelector('body')
 };
+
 
 refs.listOfFilm.addEventListener('click', onClickFilm);
 refs.closeModalBtn.addEventListener('click', onCloseModal);
@@ -34,12 +36,14 @@ async function onClickFilm(e) {
 function onOpenModal() {
   window.addEventListener('keydown', inKeyDownEscModalClose);
   refs.modal.classList.toggle('backdrop--is-hidden');
+  refs.body.classList.toggle('modal-open');
   addWatchedBtnListener();
 }
 
 function onCloseModal() {
   window.removeEventListener('keydown', inKeyDownEscModalClose);
   refs.modal.classList.toggle('backdrop--is-hidden');
+  refs.body.classList.toggle('modal-open');
   removeWatchedBtnListener();
 }
 
