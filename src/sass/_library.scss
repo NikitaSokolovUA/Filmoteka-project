@@ -109,9 +109,7 @@
 
   border: 1px solid $white-color;
   border-radius: 5px;
-  transition-property: background-color, border;
-  transition-duration: 250ms;
-  transition-timing-function: ease-out;
+  transition: border 250ms ease-in-out, background-color 250ms ease-in-out;
 
   @media screen and (min-width: 768px) {
     width: 152px;
