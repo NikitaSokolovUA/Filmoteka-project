@@ -1,5 +1,6 @@
 import FilmsLoadService from './films-request';
 
+
 const gallery = document.querySelector('.film__list');
 const BASE_URL = 'https://image.tmdb.org/t/p/w500';
 const filmsLoadService = new FilmsLoadService();
@@ -39,10 +40,10 @@ export default async function renderFilmCard(films) {
       //  верстка готової карточки фільма
        return `
         <li class="film__card" id=${id}>
-            <a class="film__poster"><img class="film__image" ${poster} alt="${title}" loading="lazy" /></a>
+            <a class="film__poster"><img class="film__image" ${(poster)} alt="${title}" loading="lazy" /></a>
             <div class="film__info">
-                <p class="film__title">${title}</p>
-                <p class="film__ganre">${genre} | ${date}</p>
+                <p class="film__title">${addAudit(title)}</p>
+                <p class="film__ganre">${genre} | ${addAudit(date)}</p>
             </div>
         </li>
     `;
@@ -58,6 +59,10 @@ function addIdToGanres(ids) {
   const parsedGanres = JSON.parse(getGenres)
   const addGenresArray = [];
 
+  if (ids.length === 0) {
+    return 'Some Ganres'
+  }
+  
 
   parsedGanres.map(ganre => {
      ids.map(id => {
@@ -75,3 +80,9 @@ function addIdToGanres(ids) {
   return addGenresArray.join(', ')
 }
  
+function addAudit(string) {
+  if (string.length === 0) {
+    return 'no_info'
+  }
+  return string
+}
