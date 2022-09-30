@@ -41,7 +41,7 @@ async function onClickFilm(e) {
   onOpenModal();
 }
 
-export default function onOpenModal() {
+function onOpenModal() {
   window.addEventListener('keydown', inKeyDownEscModalClose);
   refs.modal.classList.toggle('backdrop--is-hidden');
   refs.body.classList.toggle('modal-open');
@@ -49,7 +49,7 @@ export default function onOpenModal() {
   addQueuedBtnListener();
 }
 
-export default function onCloseModal() {
+function onCloseModal() {
   window.removeEventListener('keydown', inKeyDownEscModalClose);
   refs.modal.classList.toggle('backdrop--is-hidden');
   refs.body.classList.toggle('modal-open');
@@ -57,13 +57,13 @@ export default function onCloseModal() {
   removeQueuedBtnListener();
 }
 
-export default function onClickBackdropModalClose(event) {
+function onClickBackdropModalClose(event) {
   if (event.target === event.currentTarget) {
     onCloseModal();
   }
 }
 
-export default function inKeyDownEscModalClose(event) {
+function inKeyDownEscModalClose(event) {
   const KEY_CODE_ESCAPE = 'Escape';
 
   if (event.code === KEY_CODE_ESCAPE) {
