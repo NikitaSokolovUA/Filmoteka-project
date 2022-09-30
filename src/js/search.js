@@ -18,8 +18,11 @@ async function onSearch(event) {
 
   if (filmsSearch.query === '') {
     Notiflix.Notify.info('&#128519 Please, complete the search field!');
-    warningText.innerHTML =
-      'Search result not successful. Enter the correct movie name and try again';
+    printText(
+      'Search result not successful. Enter the correct movie name and try again',
+      warningText,
+      40
+    );
     return;
   }
 
@@ -27,14 +30,15 @@ async function onSearch(event) {
   try {
     if (filmsResponse.total_results === 0) {
       Notiflix.Notify.failure('&#128561 Оh my god, what do you want?');
-      warningText.innerHTML = 'Search result not successful. Enter the correct movie name and try again';
-      return
+      printText(
+        'Search result not successful. Enter the correct movie name and try again',
+        warningText,
+        40
+      );
+      return;
     }
 
-    if (
-      (filmsResponse.total_results > 0) &
-      (filmsResponse.total_results <= 1000)
-    ) {
+    if (filmsResponse.total_results > 0) {
       warningText.innerHTML = '';
       Notiflix.Notify.success(
         `Cool!&#128526 You can see ${filmsResponse.total_results} films!`
@@ -51,13 +55,6 @@ async function onSearch(event) {
       //************
 
       renderFilmCard(filmsResponse.results);
-    }
-
-    if (filmsResponse.total_results > 1000) {
-      warningText.innerHTML = '';
-      Notiflix.Notify.info(
-        '&#128540 It will be too difficult for you to choose a movie'
-      );
     }
   } catch (error) {
     console.log(error.message);
@@ -76,4 +73,14 @@ async function paginatePage(event) {
   clearFilms();
   const responce = await filmsSearch.requestFilms();
   renderFilmCard(responce.results);
+}
+
+//************Function printText-самопечатающийся текст****************/////
+function printText(text, elem, delay) {
+  if (text.length > 0) {
+    elem.innerHTML += text[0];
+    setTimeout(function () {
+      printText(text.slice(1), elem, delay);
+    }, delay);
+  }
 }
