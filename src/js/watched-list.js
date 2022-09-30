@@ -11,7 +11,7 @@ Notiflix.Notify.init({
 // створюємо змінну масиву фільмів і ключ для сховища, екземпляр класу для роботи з api
 
 const moviesLoad = new FilmsLoadService();
-const watchedKeyStorage = 'watchedKey';
+export default watchedKeyStorage = 'watchedKey';
 let watchedBtnEl;
 // функція додає слухача на кнопку "add to watched"
 export function addWatchedBtnListener() {
@@ -28,6 +28,7 @@ export function removeWatchedBtnListener() {
 function addWatchedBtnClick(evt) {
   const idData = evt.target.dataset.id;
   console.log(idData);
+
   const action = evt.target.dataset.action;
   switch (action) {
     case 'add':
@@ -54,6 +55,7 @@ async function onWatchedList(movieId) {
     console.log(' moviesLoad', moviesLoad.id);
 
     const response = await moviesLoad.requestFilmDetails();
+    response['genre_ids'] = response['genres'].map(obj => obj.id);
     console.log(response);
     addItemToList(response);
   } catch (error) {
