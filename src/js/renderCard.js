@@ -27,23 +27,9 @@ export default async function renderFilmCard(films) {
         date = release_date.slice(0, 4);
       }
       //  перетворення id-жанрів у нормальні назви
-
      
-
-      const genresFilm =  genre_ids;
-
-      //  addIdToGanres(genresFilm)
-      
-      // genresFilm.forEach(id => {
-      //   getGenres.forEach(genre => {
-      //     if (id === genre.id) {
-      //       addGenresArray.push(genre.name);
-      //     }
-      //   });
-      // });
-
-     
-      const genre = addIdToGanres(genresFilm)
+      const genre = addIdToGanres(genre_ids)
+    
 
       let poster = '';
       if (poster_path === null) {
@@ -78,11 +64,14 @@ function addIdToGanres(ids) {
       if (ganre.id === id) {
         addGenresArray.push(ganre.name)
       }
-    })
-    
-      return addGenresArray.join(', ');
-
+     })
   })
+       if (addGenresArray.length > 2) {
+           const deletedItems = addGenresArray.splice(0, 2);
 
+           return `${deletedItems.join(', ')}, others` 
+       }
+  
+  return addGenresArray.join(', ')
 }
  
