@@ -1,0 +1,125 @@
+.registration {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 30px;
+
+  @media screen and (min-width: 768px) {
+    margin-top: 40px;
+  }
+}
+
+.reg-list {
+  display: flex;
+  flex-direction: row;
+}
+
+.reg-btn {
+  position: relative;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.17;
+  text-transform: uppercase;
+  color: $white-color;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 4;
+  opacity: 1;
+  transition: opacity 250ms ease-in-out;
+}
+
+.backdrop.is-hidden {
+  opacity: 0;
+  pointer-events: none;
+  visibility: hidden;
+}
+
+.backdrop.is-hidden .modal {
+  transform: translate(-50%, -50%) scale(0.6);
+}
+
+.modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  height: auto;
+  transform: translate(-50%, -50%) scale(1);
+  transition: transform 250ms ease-in-out;
+  background-color: $white-color;
+
+  @media screen and (max-width: 479px) {
+    width: calc(100% - 10px);
+    padding: 8px;
+  }
+  @media screen and (min-width: 480px) {
+    min-width: 450px;
+    min-height: auto;
+  }
+}
+
+.modal-box {
+  padding: 40px;
+}
+
+.modal-title {
+  font-size: 35px;
+  margin-bottom: 44px;
+}
+
+.modal-form {
+  color: $black-color;
+}
+
+.modal-form-field {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: 100%;
+  margin-bottom: 44px;
+
+  input {
+    height: 23px;
+  }
+  textarea {
+    height: 75px;
+  }
+}
+
+.modal-form-input {
+  margin: 0;
+  padding: 3px;
+  resize: none;
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid $white-color;
+  cursor: pointer;
+  color: $black-color;
+  outline: none;
+}
+
+.modal-form-input:focus + label,
+.modal-form-input:hover + label,
+.modal-form-input:not(:placeholder-shown) + label {
+  color: $white-color;
+  transform: translateY(-100%);
+}
+
+.form-input:focus,
+.form-input:hover {
+  border: none;
+  border-bottom: 1px solid $white-color;
+}
+
+.form-label {
+  position: absolute;
+  transition: transform 250ms ease-in-out;
+}
