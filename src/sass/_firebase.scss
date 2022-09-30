@@ -58,7 +58,6 @@
 
   @media screen and (max-width: 479px) {
     width: calc(100% - 10px);
-    padding: 8px;
   }
   @media screen and (min-width: 480px) {
     min-width: 450px;
@@ -67,16 +66,13 @@
 }
 
 .modal-box {
-  padding: 40px;
+  padding: 30px;
 }
 
 .modal-title {
+  text-align: center;
   font-size: 35px;
-  margin-bottom: 44px;
-}
-
-.modal-form {
-  color: $black-color;
+  margin-bottom: 30px;
 }
 
 .modal-form-field {
@@ -100,16 +96,15 @@
   resize: none;
   background-color: transparent;
   border: none;
-  border-bottom: 1px solid $white-color;
+  border-bottom: 1px solid $black-color;
   cursor: pointer;
-  color: $black-color;
   outline: none;
 }
 
 .modal-form-input:focus + label,
 .modal-form-input:hover + label,
 .modal-form-input:not(:placeholder-shown) + label {
-  color: $white-color;
+  color: $accent-color;
   transform: translateY(-100%);
 }
 
@@ -128,4 +123,77 @@
   opacity: 0;
   pointer-events: none;
   visibility: hidden;
+}
+
+.button-modal {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  display: flex;
+  justify-content: center;
+  width: 35px;
+  height: 35px;
+  outline: none;
+
+  cursor: pointer;
+  background: $white-color;
+  border: none;
+}
+
+.button-modal-icon {
+  width: 20px;
+  height: 20px;
+  transition: fill 250ms ease-in-out;
+
+  .button-modal:focus &,
+  .button-modal:hover & {
+    fill: $accent-color;
+  }
+}
+
+.online-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: 100%;
+  margin-bottom: 44px;
+
+  @media screen and (min-width: 768px) {
+    margin-bottom: 33px;
+  }
+
+  input {
+    height: 23px;
+  }
+  textarea {
+    height: 75px;
+    display: flex;
+  }
+}
+
+.fb-modal-btn {
+  padding: 10px;
+  background-color: transparent;
+  border: 1px solid $accent-color;
+  border-radius: 10px;
+  outline: none;
+  cursor: pointer;
+  text-transform: uppercase;
+  transition: background-color 250ms ease-in-out, color 250ms ease-in-out;
+
+  &:hover,
+  &:focus {
+    background-color: $accent-color;
+    color: $white-color;
+  }
 }
