@@ -1,9 +1,35 @@
-.tui-page-btn {
-  color: black;
-  background: $white-color;
+// ---pagination---
+#my-pagination .tui-pagination {
+  margin: 60px 0;
 }
 
-// .tui-main {
-//   background: $accent-color;
-//   border-color: $accent-color;
-// }
+#my-pagination .tui-page-btn {
+  color: $black-color;
+  border-radius: 20%;
+  width: 40px;
+  border-width: 0;
+  font-weight: 500;
+  font-size: 14px;
+  margin-right: 10px;
+}
+
+#pagination > span.tui-page-btn.tui-is-disabled.tui-prev {
+  &.night-mode {
+    background-color: red;
+  }
+}
+
+#my-pagination .tui-is-selected {
+  background: $accent-color;
+  border-color: $accent-color;
+  color: $white-color;
+  padding: 13px 0 13px;
+}
+
+#my-pagination .tui-next,
+#my-pagination .tui-prev {
+  background: $footer-color;
+  height: 40px;
+  color: $black-color;
+  padding: 8px 0 8px;
+}
