@@ -1,5 +1,6 @@
 import FilmsLoadService from './films-request';
 
+
 const gallery = document.querySelector('.film__list');
 const BASE_URL = 'https://image.tmdb.org/t/p/w500';
 const filmsLoadService = new FilmsLoadService();
@@ -7,8 +8,15 @@ const filmsLoadService = new FilmsLoadService();
 export default async function renderFilmCard(films) {
   // отримання масиву id-жанрів разом з назвами
 
-  const responceGenres = await filmsLoadService.requestGenres();
-  const getGenres = await responceGenres.genres;
+ 
+
+  if (!localStorage.getItem("ids")) {
+    const responceGenres = await filmsLoadService.requestGenres();
+    const getGenres = await responceGenres.genres;
+    localStorage.setItem("ids", JSON.stringify(getGenres));
+  }
+  
+  
 
   // рендер карточки фільма та створення фільмотеки
 
@@ -20,25 +28,8 @@ export default async function renderFilmCard(films) {
         date = 'no release date';
       } else date = release_date.slice(0, 4);
       //  перетворення id-жанрів у нормальні назви
-
-
-      const genresFilm = genre_ids;
-      const addGenresArray = [];
-      genresFilm.forEach(id => {
-        getGenres.forEach(genre => {
-          if (id === genre.id) {
-            addGenresArray.push(genre.name);
-          }
-        });
-      });
-      let genre = addGenresArray.slice(0, 2).join(', ');
-      if (genre_ids.length > 2) {
-        genre += ', Other';
-      }
-      if (genre_ids.length === 0) {
-        genre = 'I have not ganres';
-      }
-
+     
+      const genre = addIdToGanres(genre_ids)
 
       let poster = '';
       if (poster_path === null) {
@@ -48,13 +39,13 @@ export default async function renderFilmCard(films) {
       //  верстка готової карточки фільма
        return `
         <li class="film__card" id=${id}>
-            <div class="film__poster">
-              <img class="film__image" ${poster} alt="${title}" loading="lazy" />
-            </div>
-            <div class="film__info">
-                <p class="film__title-main">${title}</p>
-                <p class="film__ganre">${genre} | ${date}</p>
-            </div>
+          <div class="film__poster">
+            <img class="film__image" ${(poster)} alt="${title}" loading="lazy" />
+          </div>
+          <div class="film__info">
+            <p class="film__title-main">${addAudit(title)}</p>
+            <p class="film__ganre">${genre} | ${addAudit(date)}</p>
+          </div>
         </li>
     `;
     })
@@ -64,5 +55,38 @@ export default async function renderFilmCard(films) {
 
 }
 
+function addIdToGanres(ids) {
+  const getGenres = localStorage.getItem("ids");
+  const parsedGanres = JSON.parse(getGenres)
+  const addGenresArray = [];
 
+// <<<<<<< HEAD
+// =======
+  if (ids.length === 0) {
+    return 'Some Ganres'
+  }
+  
+// >>>>>>> main
+
+  parsedGanres.map(ganre => {
+     ids.map(id => {
+      if (ganre.id === id) {
+        addGenresArray.push(ganre.name)
+      }
+     })
+  })
+       if (addGenresArray.length > 2) {
+           const deletedItems = addGenresArray.splice(0, 2);
+
+           return `${deletedItems.join(', ')}, others` 
+       }
+  
+  return addGenresArray.join(', ')
+}
  
+function addAudit(string) {
+  if (string.length === 0) {
+    return 'no_info'
+  }
+  return string
+}

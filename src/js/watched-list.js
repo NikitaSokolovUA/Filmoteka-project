@@ -20,6 +20,7 @@ export function addWatchedBtnListener() {
   watchedBtnEl = document.querySelector('.add-watchedbtn-js');
   watchedBtnEl.addEventListener('click', addWatchedBtnClick);
 }
+
 // фукція видаляє слухача з кнопки "add to watched"
 export function removeWatchedBtnListener() {
   watchedBtnEl.removeEventListener('click', addWatchedBtnClick);
@@ -83,6 +84,7 @@ function addItemToList(data) {
     saveList(watchedKeyStorage, items, true);
   }
 }
+
 // видаляємо з переліку
 function removeItemFromList(movieId) {
   const items = loadList(watchedKeyStorage);
