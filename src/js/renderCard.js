@@ -7,8 +7,15 @@ const filmsLoadService = new FilmsLoadService();
 export default async function renderFilmCard(films) {
   // отримання масиву id-жанрів разом з назвами
 
-  const responceGenres = await filmsLoadService.requestGenres();
-  const getGenres = await responceGenres.genres;
+ 
+
+  if (!localStorage.getItem("ids")) {
+    const responceGenres = await filmsLoadService.requestGenres();
+    const getGenres = await responceGenres.genres;
+    localStorage.setItem("ids", JSON.stringify(getGenres));
+  }
+  
+  
 
   // рендер карточки фільма та створення фільмотеки
 
@@ -20,17 +27,9 @@ export default async function renderFilmCard(films) {
         date = release_date.slice(0, 4);
       }
       //  перетворення id-жанрів у нормальні назви
-
-      const genresFilm = genre_ids;
-      const addGenresArray = [];
-      genresFilm.forEach(id => {
-        getGenres.forEach(genre => {
-          if (id === genre.id) {
-            addGenresArray.push(genre.name);
-          }
-        });
-      });
-      const genre = addGenresArray.join(', ');
+     
+      const genre = addIdToGanres(genre_ids)
+    
 
       let poster = '';
       if (poster_path === null) {
@@ -54,5 +53,25 @@ export default async function renderFilmCard(films) {
 
 }
 
+function addIdToGanres(ids) {
+  const getGenres = localStorage.getItem("ids");
+  const parsedGanres = JSON.parse(getGenres)
+  const addGenresArray = [];
 
+
+  parsedGanres.map(ganre => {
+     ids.map(id => {
+      if (ganre.id === id) {
+        addGenresArray.push(ganre.name)
+      }
+     })
+  })
+       if (addGenresArray.length > 2) {
+           const deletedItems = addGenresArray.splice(0, 2);
+
+           return `${deletedItems.join(', ')}, others` 
+       }
+  
+  return addGenresArray.join(', ')
+}
  
