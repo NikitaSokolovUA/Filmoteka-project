@@ -1,3 +1,4 @@
+import { isMovieOnList } from '../js/watched-list';
 const BASE_URL = 'https://image.tmdb.org/t/p/w500';
 
 export default function renderModalCard(film) {
@@ -13,6 +14,12 @@ export default function renderModalCard(film) {
     title,
   } = film;
 
+  let watchedBtnText;
+  const watchedBtnAction = isMovieOnList(id);
+  watchedBtnAction === 'add'
+    ? (watchedBtnText = 'add to Watched')
+    : (watchedBtnText = 'delete from watched');
+
   return `<div class="modal__image-container" id='${id}'>
         <img
           class="modal__image"
@@ -26,9 +33,9 @@ export default function renderModalCard(film) {
           <li class="film__item">
             <p class="film__details">Vote / Votes</p>
             <p class="film__value">
-              <span class="film__rating--orange">${addAudit(vote_average.toFixed(
-                1
-              ))}</span>
+              <span class="film__rating--orange">${addAudit(
+                vote_average.toFixed(1)
+              )}</span>
               <span class="film__rating--slash"> / </span>
               <span class="vote-count">${addAudit(vote_count)}</span>
             </p>
@@ -52,7 +59,7 @@ export default function renderModalCard(film) {
             ${addAudit(overview)}
           </p>
           <div class="film-btn__wrapper">
-            <button class="film-button add-watchedbtn-js" type="button" data-id="${id}" data-action="add" >add to Watched</button>
+            <button class="film-button add-watchedbtn-js" type="button" data-id="${id}" data-action="${watchedBtnAction}" >${watchedBtnText}</button>
             <button class="film-button add-queuedbtn-js" type="button" data-id="${id}" data-action="add" >add to queue</button>
           </div>
         </div>`;
@@ -62,10 +69,9 @@ function ganresString(id) {
   return id.map(({ name }) => name).join(', ');
 }
 
-
 function addAudit(string) {
   if (string.length === 0) {
-    return 'no_info'
+    return 'no_info';
   }
-  return string
+  return string;
 }

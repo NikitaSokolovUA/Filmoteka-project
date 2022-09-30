@@ -1,18 +1,18 @@
 import FilmsLoadService from './films-request';
 import { saveList, loadList } from './storage-utils';
-import Notiflix from 'notiflix';
-Notiflix.Notify.init({
-  width: '280px',
-  position: 'center-top',
-  distance: '10px',
-  opacity: 1,
-});
+// import Notiflix from 'notiflix';
+// Notiflix.Notify.init({
+//   width: '280px',
+//   position: 'center-top',
+//   distance: '10px',
+//   opacity: 1,
+// });
 
 // створюємо змінну масиву фільмів і ключ для сховища, екземпляр класу для роботи з api
 
 const moviesLoad = new FilmsLoadService();
 const watchedKeyStorage = 'watchedKey';
-export default watchedKeyStorage ;
+export default watchedKeyStorage;
 
 let watchedBtnEl;
 // функція додає слухача на кнопку "add to watched"
@@ -30,7 +30,6 @@ export function removeWatchedBtnListener() {
 // кнопка повинна мати атрібути data-id з айді картки фільму , та data-action з "add" або "remove"
 function addWatchedBtnClick(evt) {
   const idData = evt.target.dataset.id;
-  console.log(idData);
 
   const action = evt.target.dataset.action;
   switch (action) {
@@ -39,6 +38,7 @@ function addWatchedBtnClick(evt) {
       break;
     case 'remove':
       removeItemFromList(idData);
+
       break;
   }
 }
@@ -47,6 +47,10 @@ function addWatchedBtnClick(evt) {
 //  і надання потрібного атрибуту кнопці data-action
 export function isMovieOnList(movieId) {
   const items = loadList(watchedKeyStorage);
+  // console.log(items);
+  if (!items) {
+    return 'add';
+  }
   const index = items.findIndex(item => item.id === movieId);
   return index === -1 ? 'add' : 'remove';
 }
@@ -55,11 +59,11 @@ export function isMovieOnList(movieId) {
 async function onWatchedList(movieId) {
   try {
     moviesLoad.id = movieId;
-    console.log(' moviesLoad', moviesLoad.id);
+    // console.log(' moviesLoad', moviesLoad.id);
 
     const response = await moviesLoad.requestFilmDetails();
     response['genre_ids'] = response['genres'].map(obj => obj.id);
-    console.log(response);
+    // console.log(response);
     addItemToList(response);
   } catch (error) {
     console.error(error);
@@ -69,17 +73,14 @@ async function onWatchedList(movieId) {
 // додаємо до переліку
 function addItemToList(data) {
   const items = loadList(watchedKeyStorage);
-  if (!items) {
+  if (!items || items.lenght == 0) {
     const storageListArray = [];
     storageListArray.push(data);
     saveList(watchedKeyStorage, storageListArray, true);
   } else {
     const index = items.findIndex(item => item.id === data.id);
+    console.log('index way2');
 
-    if (index !== -1) {
-      Notiflix.Notify.warning('Your movie is already in the library');
-      return;
-    }
     items.push(data);
     saveList(watchedKeyStorage, items, true);
   }
@@ -88,12 +89,22 @@ function addItemToList(data) {
 // видаляємо з переліку
 function removeItemFromList(movieId) {
   const items = loadList(watchedKeyStorage);
-  const index = items.findIndex(item => item.id === movieId);
+
+  const index = items.findIndex(item => item.id === Number(movieId));
 
   if (index === -1) {
     return;
   }
   items.splice(index, 1);
   saveList(watchedKeyStorage, items);
+}
+// button change
+export function changeBtnStatus() {
+  const statusBtn = watchedBtnEl.dataset.action;
+  statusBtn === 'add'
+    ? ((watchedBtnEl.dataset.action = 'remove'),
+      (watchedBtnEl.textContent = 'delete from watched'))
+    : ((watchedBtnEl.dataset.action = 'add'),
+      (watchedBtnEl.textContent = 'add to Watched'));
 }
 export { watchedKeyStorage };

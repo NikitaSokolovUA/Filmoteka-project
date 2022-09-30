@@ -26,15 +26,19 @@ body.modal-open {
   width: 280px;
   background-color: #fff;
   padding: 48px 20px 40px 20px;
+  
 
 
   @include mq(tablet) {
     width: 704px;
     padding: 40px 72px 40px 36px;
+    
   }
 
   @include mq(desktop) {
     width: 806px;
     padding: 40px 12px;
+    
   }
+    
 }
