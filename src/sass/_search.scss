@@ -17,4 +17,13 @@
     left: 380px;
   }
 }
+
+#search-form > button > svg:hover {
+  transform: scale(1.2);
+}
+
+#search-form > input:hover,
+#search-form > input:focus {
+  box-shadow: 0 10px 10px -5px rgba(192, 56, 56, 0.767);
+}
 //

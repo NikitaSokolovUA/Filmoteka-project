@@ -13,12 +13,6 @@
   margin-right: 10px;
 }
 
-#pagination > span.tui-page-btn.tui-is-disabled.tui-prev {
-  &.night-mode {
-    background-color: red;
-  }
-}
-
 #my-pagination .tui-is-selected {
   background: $accent-color;
   border-color: $accent-color;
@@ -32,4 +26,11 @@
   height: 40px;
   color: $black-color;
   padding: 8px 0 8px;
+}
+
+#pagination > span.tui-prev,
+#pagination > a.tui-next {
+  &.night-mode {
+    background-color: $grey-color;
+  }
 }
