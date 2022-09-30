@@ -30,8 +30,8 @@ export function removeQueuedBtnListener() {
 // функція-обробник події кліку на "Added to queued"
 
 function addQueuedBtnClick(evt) {
-  const idData = evt.target.dataset.id;
-  console.log(idData);
+  const idData = evt.target.dataset.id
+  console.log(evt.target);
 
   const action = evt.target.dataset.action;
   switch (action) {
