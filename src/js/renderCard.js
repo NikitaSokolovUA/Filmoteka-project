@@ -32,15 +32,6 @@ export default async function renderFilmCard(films) {
       });
       const genre = addGenresArray.join(', ');
 
-      //перевірка на наявність постера
-
-      let poster = '';
-      if (poster_path === null) {
-        poster =  `src = "https://upload.wikimedia.org/wikipedia/commons/6/65/No-Image-Placeholder.svg" width="100%" height="100%"`
-
-      } else poster = `src ="${BASE_URL}${poster_path}"`
-
-      
       //  верстка готової карточки фільма
 
       return `
