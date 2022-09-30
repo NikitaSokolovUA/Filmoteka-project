@@ -32,12 +32,15 @@ export default async function renderFilmCard(films) {
       });
       const genre = addGenresArray.join(', ');
 
+      let poster = '';
+      if (poster_path === null) {
+        poster =  `src = "https://upload.wikimedia.org/wikipedia/commons/6/65/No-Image-Placeholder.svg" width="100%" height="100%"`
 
+      } else poster = `src ="${BASE_URL}${poster_path}"`
       //  верстка готової карточки фільма
-
-      return `
+       return `
         <li class="film__card" id=${id}>
-            <a class="film__poster"><img class="film__image" src = "${BASE_URL}${poster_path}" alt="${title}" loading="lazy" /></a>
+            <a class="film__poster"><img class="film__image" ${poster} alt="${title}" loading="lazy" /></a>
             <div class="film__info">
                 <p class="film__title">${title}</p>
                 <p class="film__ganre">${genre} | ${date}</p>
