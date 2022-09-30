@@ -38,8 +38,7 @@ export default async function renderFilmCard(films) {
 
       } else poster = `src ="${BASE_URL}${poster_path}"`
       //  верстка готової карточки фільма
-
-      return `
+       return `
         <li class="film__card" id=${id}>
             <a class="film__poster"><img class="film__image" ${poster} alt="${title}" loading="lazy" /></a>
             <div class="film__info">
