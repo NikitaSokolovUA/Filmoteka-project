@@ -11,7 +11,8 @@ Notiflix.Notify.init({
 // створюємо змінну масиву фільмів і ключ для сховища, екземпляр класу для роботи з api
 
 const moviesLoad = new FilmsLoadService();
-export default watchedKeyStorage = 'watchedKey';
+// export default watchedKeyStorage = 'watchedKey';
+const watchedKeyStorage = 'watchedKey';
 let watchedBtnEl;
 // функція додає слухача на кнопку "add to watched"
 export function addWatchedBtnListener() {
