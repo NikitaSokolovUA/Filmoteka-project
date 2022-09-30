@@ -3,24 +3,30 @@ ul {
   padding: 0;
 }
 
-.modal__button-close {
+.modal__button {
   position: absolute;
-  cursor: pointer;
-  top: 8px;
-  right: 8px;
+  top: 16px;
+  right: 16px;
+
   display: flex;
-  justify-content: center;
-  align-items: center;
+    justify-content: center;
+    align-items: center;
+
+  cursor: pointer;
+  color: #000000;
   border: none;
   background-color: #fff;
-  padding: 8px;
 }
 
-.modal__icon-close {
-  fill: black;
+.modal__icon{
+  color: #000000;
   width: 14px;
   height: 14px;
+  fill: currentColor;
 }
+
+
+
 
 .modal__container {
   width: 100%;
