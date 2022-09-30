@@ -56,7 +56,7 @@ export function isMovieOnList(movieId) {
 async function onQueuedList(movieId) {
   try {
     moviesLoad.id = movieId;
-    console.log(' moviesLoad', moviesLoad.id);
+    console.log('moviesLoad', moviesLoad.id);
 
     const response = await moviesLoad.requestFilmDetails();
     response['genre_ids'] = response['genres'].map(obj => obj.id);
