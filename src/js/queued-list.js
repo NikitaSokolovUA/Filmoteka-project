@@ -10,7 +10,7 @@ Notiflix.Notify.init({
 
 // створюємо змінну масиву фільмів і ключ для сховища, екземпляр класу для роботи з api
 
-const moviesLoad = new FilmsLoadService();
+const moviesLoads = new FilmsLoadService();
 const queuedKeyStorage = 'queuedKey';
 export default queuedKeyStorage;
 
@@ -55,10 +55,10 @@ export function isMovieOnList(movieId) {
 // отримуємо об'єкт фільму
 async function onQueuedList(movieId) {
   try {
-    moviesLoad.id = movieId;
-    console.log('moviesLoad', moviesLoad.id);
+    moviesLoads.id = movieId;
+    console.log('moviesLoads', moviesLoads.id);
 
-    const response = await moviesLoad.requestFilmDetails();
+    const response = await moviesLoads.requestFilmDetails();
     response['genre_ids'] = response['genres'].map(obj => obj.id);
     console.log(response);
     addItemToList(response);
