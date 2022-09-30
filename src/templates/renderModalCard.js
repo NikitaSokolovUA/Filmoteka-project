@@ -21,35 +21,35 @@ export default function renderModalCard(film) {
         />
       </div>
     <div class="film__info">
-        <h2 class="film__title">${title}</h2>
+        <h2 class="film__title">${addAudit(title)}</h2>
         <ul class="film-modal__list">
           <li class="film__item">
             <p class="film__details">Vote / Votes</p>
             <p class="film__value">
-              <span class="film__rating--orange">${vote_average.toFixed(
+              <span class="film__rating--orange">${addAudit(vote_average.toFixed(
                 1
-              )}</span>
+              ))}</span>
               <span class="film__rating--slash"> / </span>
-              <span class="vote-count">${vote_count}</span>
+              <span class="vote-count">${addAudit(vote_count)}</span>
             </p>
           </li>
           <li class="film__item">
             <p class="film__details">Popularity</p>
-            <p class="film__value">${popularity.toFixed(1)}</p>
+            <p class="film__value">${addAudit(popularity.toFixed(1))}</p>
           </li>
           <li class="film__item">
             <p class="film__details">Original title</p>
-            <p class="film__value">${original_title}</p>
+            <p class="film__value">${addAudit(original_title)}</p>
           </li>
           <li class="film__item">
             <p class="film__details">Genre</p>
-            <p class="film__value">${ganresString(genres)}</p>
+            <p class="film__value">${addAudit(ganresString(genres))}</p>
           </li>
         </ul>
         <div class="film-about__wrapper">
           <h3 class="film-about__title">About</h3>
           <p class="film-about__text">
-            ${overview}
+            ${addAudit(overview)}
           </p>
           <div class="film-btn__wrapper">
             <button class="film-button add-watchedbtn-js" type="button" data-id="${id}" data-action="add" >add to Watched</button>
@@ -60,4 +60,12 @@ export default function renderModalCard(film) {
 
 function ganresString(id) {
   return id.map(({ name }) => name).join(', ');
+}
+
+
+function addAudit(string) {
+  if (string.length === 0) {
+    return 'no_info'
+  }
+  return string
 }
