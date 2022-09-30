@@ -2,7 +2,10 @@ import renderFilmCard from './renderCard';
 import { queuedKeyStorage } from './queued-list';
 import FilmsPagination from './pagination';
 
+const queuedListBtn = document.querySelector('.queued-btn-js');
+
 function loadQueuedFilms() {
+  queuedListBtn.classList.add('active-js');
   const queuedFilms = JSON.parse(localStorage.getItem(queuedKeyStorage));
   if (queuedFilms) {
     renderFilmCard(queuedFilms.slice(0, 20));
@@ -10,7 +13,8 @@ function loadQueuedFilms() {
     paginator.pagination.on('afterMove', paginatePage);
   }
 }
-loadQueuedFilms();
+
+queuedListBtn.addEventListener('click', loadQueuedFilms);
 
 function paginatePage(event) {
   const currentPage = event.page;

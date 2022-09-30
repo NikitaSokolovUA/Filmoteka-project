@@ -12,7 +12,7 @@ Notiflix.Notify.init({
 
 const moviesLoad = new FilmsLoadService();
 const queuedKeyStorage = 'queuedKey';
-export default queuedKeyStorage ;
+export default queuedKeyStorage;
 
 let queuedBtnEl;
 // функція додає слухача на кнопку "Added to queued"
