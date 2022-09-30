@@ -5,6 +5,12 @@ import {
   removeWatchedBtnListener,
 } from './watched-list';
 
+// імпорт для кнопки add to queue
+import {
+  addQueuedBtnListener,
+  removeQueuedBtnListener,
+} from './queued-list';
+
 const refs = {
   modal: document.querySelector('[data-modal]'),
   closeModalBtn: document.querySelector('[data-modal-close]'),
@@ -33,18 +39,24 @@ async function onClickFilm(e) {
   onOpenModal();
 }
 
+// додав addQueuedBtnListener();
+
 function onOpenModal() {
   window.addEventListener('keydown', inKeyDownEscModalClose);
   refs.modal.classList.toggle('backdrop--is-hidden');
   refs.body.classList.toggle('modal-open');
   addWatchedBtnListener();
+  addQueuedBtnListener();
 }
+
+// додав removeQueuedBtnListener();
 
 function onCloseModal() {
   window.removeEventListener('keydown', inKeyDownEscModalClose);
   refs.modal.classList.toggle('backdrop--is-hidden');
   refs.body.classList.toggle('modal-open');
   removeWatchedBtnListener();
+  removeQueuedBtnListener();
 }
 
 function onClickBackdropModalClose(event) {
