@@ -5,6 +5,7 @@ import {
   removeWatchedBtnListener,
 } from './watched-list';
 import { loadWatchedFilms } from './library_watched';
+import { addQueuedBtnListener, removeQueuedBtnListener } from './queued-list';
 
 const refs = {
   modal: document.querySelector('[data-modal]'),
@@ -42,6 +43,7 @@ function onOpenModal() {
   refs.modal.classList.toggle('backdrop--is-hidden');
   refs.body.classList.toggle('modal-open');
   addWatchedBtnListener();
+   addQueuedBtnListener();
 }
 
 function onCloseModal() {
@@ -49,7 +51,8 @@ function onCloseModal() {
   refs.modal.classList.toggle('backdrop--is-hidden');
   refs.body.classList.toggle('modal-open');
   removeWatchedBtnListener();
-  loadWatchedFilms();
+  removeQueuedBtnListener();
+  // loadWatchedFilms();
 }
 
 function onClickBackdropModalClose(event) {

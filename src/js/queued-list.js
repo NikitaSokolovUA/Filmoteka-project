@@ -46,7 +46,7 @@ function addQueuedBtnClick(evt) {
 
 // функція перевірки наявності фільму у переліку
 
-export function isMovieOnList(movieId) {
+export function isMovieOnListQue(movieId) {
   const items = loadListQ(queuedKeyStorage);
   if (!items) {
     return 'add';
