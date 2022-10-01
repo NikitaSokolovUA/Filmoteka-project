@@ -1,12 +1,5 @@
 import FilmsLoadService from './films-request';
 import { saveList, loadList } from './storage-utils';
-// import Notiflix from 'notiflix';
-// Notiflix.Notify.init({
-//   width: '280px',
-//   position: 'center-top',
-//   distance: '10px',
-//   opacity: 1,
-// });
 
 // створюємо змінну масиву фільмів і ключ для сховища, екземпляр класу для роботи з api
 
@@ -30,7 +23,6 @@ export function removeWatchedBtnListener() {
 // кнопка повинна мати атрібути data-id з айді картки фільму , та data-action з "add" або "remove"
 function addWatchedBtnClick(evt) {
   const idData = evt.target.dataset.id;
-
   const action = evt.target.dataset.action;
   switch (action) {
     case 'add':
@@ -38,7 +30,6 @@ function addWatchedBtnClick(evt) {
       break;
     case 'remove':
       removeItemFromList(idData);
-
       break;
   }
 }
@@ -47,7 +38,6 @@ function addWatchedBtnClick(evt) {
 //  і надання потрібного атрибуту кнопці data-action
 export function isMovieOnList(movieId) {
   const items = loadList(watchedKeyStorage);
-  // console.log(items);
   if (!items) {
     return 'add';
   }
@@ -59,11 +49,8 @@ export function isMovieOnList(movieId) {
 async function onWatchedList(movieId) {
   try {
     moviesLoad.id = movieId;
-    // console.log(' moviesLoad', moviesLoad.id);
-
     const response = await moviesLoad.requestFilmDetails();
     response['genre_ids'] = response['genres'].map(obj => obj.id);
-    // console.log(response);
     addItemToList(response);
   } catch (error) {
     console.error(error);
@@ -73,14 +60,11 @@ async function onWatchedList(movieId) {
 // додаємо до переліку
 function addItemToList(data) {
   const items = loadList(watchedKeyStorage);
-  if (!items || items.lenght == 0) {
+  if (!items || items.length == 0) {
     const storageListArray = [];
     storageListArray.push(data);
     saveList(watchedKeyStorage, storageListArray, true);
   } else {
-    const index = items.findIndex(item => item.id === data.id);
-    console.log('index way2');
-
     items.push(data);
     saveList(watchedKeyStorage, items, true);
   }
@@ -97,6 +81,7 @@ function removeItemFromList(movieId) {
   }
   items.splice(index, 1);
   saveList(watchedKeyStorage, items);
+  // onCloseModal();
 }
 // button change
 export function changeBtnStatus() {
