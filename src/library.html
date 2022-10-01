@@ -13,6 +13,10 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
     />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"
+    />
     <!-- <script type="module" src="./index.js"></script> -->
   </head>
   <body>
@@ -33,7 +37,7 @@
               <li class="list menu-list">
                 <a class="link" href="./index.html">home</a>
               </li>
-              <li>
+              <li class="list">
                 <a class="link link-active" href="">my library</a>
               </li>
             </ul>
@@ -44,20 +48,45 @@
           <button class="lib-btn watched-btn-js">WATCHED</button>
           <button class="lib-btn queued-btn-js">QUEUE</button>
         </div>
+        <div class="registration">
+          <ul class="list menu">
+            <li>
+              <button type="button" class="reg-btn" id="name-user"></button>
+            </li>
+            <li>
+              <button class="menu-list reg-btn" data-reg-modal-open>
+                sigh up
+              </button>
+            </li>
+            <li>
+              <button class="reg-btn" data-auth-modal-open>sigh in</button>
+            </li>
+            <li>
+              <button type="button" class="reg-btn is-hidden" id="sighout">
+                Sigh out
+              </button>
+            </li>
+          </ul>
+        </div>
       </div>
     </header>
     <include src="./partials/main.html"></include>
     <include src="./partials/pagination.html"></include>
     <include src="./partials/footer.html"></include>
+    <include src="./partials/firebase-modal.html"></include>
     <include src="./partials/modal.html"></include>
 
     <script type="module" src="./js/day_night.js"></script>
     <script type="module" src="./js/button-up.js"></script>
     <script type="module" src="./js/pagination.js"></script>
-    <script type="module" src="./js/library_watched.js"></script>
     <script type="module" src="./js/library_queued.js"></script>
-
+    <script type="module" src="./js/library_watched.js"></script>
+    <script type="module" src="./js/firebase/firebase-config.js"></script>
+    <script type="module" src="./js/firebase/firebase-user.js"></script>
+    <script type="module" src="./js/firebase/firebase-modal.js"></script>
+    <script type="module" src="./js/firebase/firebase-main.js"></script>
     <script type="module" src="./js/modal-library.js"></script>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
   </body>
 </html>
