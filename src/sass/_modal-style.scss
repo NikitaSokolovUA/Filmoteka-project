@@ -23,6 +23,11 @@ ul {
   width: 14px;
   height: 14px;
   fill: currentColor;
+
+  &:hover,
+  &:focus {
+    color: #ff6b01;
+  }
 }
 
 .modal__container {
@@ -160,7 +165,7 @@ ul {
   height: 100px;
   overflow-y: scroll;
   margin-bottom: 20px;
-  }
+}
 
 .film-about__text {
   width: 240px;

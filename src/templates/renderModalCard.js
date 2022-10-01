@@ -26,9 +26,9 @@ export default function renderModalCard(film) {
           <li class="film__item">
             <p class="film__details">Vote / Votes</p>
             <p class="film__value">
-              <span class="film__rating--orange">${addAudit(vote_average.toFixed(
-                1
-              ))}</span>
+              <span class="film__rating--orange">${addAudit(
+                vote_average.toFixed(1)
+              )}</span>
               <span class="film__rating--slash"> / </span>
               <span class="vote-count">${addAudit(vote_count)}</span>
             </p>
@@ -48,9 +48,11 @@ export default function renderModalCard(film) {
         </ul>
         <div class="film-about__wrapper">
           <h3 class="film-about__title">About</h3>
-          <p class="film-about__text">
+          <div class="film-about-text__wrapper">
+            <p class="film-about__text">
             ${addAudit(overview)}
-          </p>
+            </p>
+          </div>
           <div class="film-btn__wrapper">
             <button class="film-button add-watchedbtn-js" type="button" data-id="${id}" data-action="add" >add to Watched</button>
             <button class="film-button" type="button">add to queue</button>
@@ -62,10 +64,9 @@ function ganresString(id) {
   return id.map(({ name }) => name).join(', ');
 }
 
-
 function addAudit(string) {
   if (string.length === 0) {
-    return 'no_info'
+    return 'no_info';
   }
-  return string
+  return string;
 }
