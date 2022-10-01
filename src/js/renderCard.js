@@ -28,16 +28,18 @@ export default async function renderFilmCard(films) {
 
       let poster = '';
       if (poster_path === null) {
-        poster = `src = "https://upload.wikimedia.org/wikipedia/commons/6/65/No-Image-Placeholder.svg" width="100%" height="100%"`;
+        poster = `src = "https://upload.wikimedia.org/wikipedia/commons/6/65/No-Image-Placeholder.svg"`;
       } else poster = `src ="${BASE_URL}${poster_path}"`;
       //  верстка готової карточки фільма
       return `
         <li class="film__card" id=${id}>
-            <a class="film__poster"><img class="film__image" ${poster} alt="${title}" loading="lazy" /></a>
-            <div class="film__info">
-                <p class="film__title">${addAudit(title)}</p>
-                <p class="film__ganre">${genre} | ${addAudit(date)}</p>
-            </div>
+          <div class="film__poster">
+            <img class="film__image" ${poster} alt="${title}" loading="lazy" />
+          </div>
+          <div class="film__info">
+            <p class="film__title-main">${addAudit(title)}</p>
+            <p class="film__ganre">${genre} | ${addAudit(date)}</p>
+          </div>
         </li>
     `;
     })
