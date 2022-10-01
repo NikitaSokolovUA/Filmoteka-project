@@ -6,6 +6,12 @@ import {
 } from './watched-list';
 import { loadWatchedFilms } from './library_watched';
 
+import {
+  addQueuedBtnListener,
+  removeQueuedBtnListener,
+} from './queued-list';
+import { loadQueuedFilms } from './library_queued';
+
 const refs = {
   modal: document.querySelector('[data-modal]'),
   closeModalBtn: document.querySelector('[data-modal-close]'),
@@ -42,6 +48,7 @@ function onOpenModal() {
   refs.modal.classList.toggle('backdrop--is-hidden');
   refs.body.classList.toggle('modal-open');
   addWatchedBtnListener();
+  addQueuedBtnListener();
 }
 
 function onCloseModal() {
@@ -50,6 +57,9 @@ function onCloseModal() {
   refs.body.classList.toggle('modal-open');
   removeWatchedBtnListener();
   loadWatchedFilms();
+  removeQueuedBtnListener();
+  loadQueuedFilms();
+
 }
 
 function onClickBackdropModalClose(event) {
@@ -73,9 +83,9 @@ function backListFromStorages() {
       
       const parseWatchedFilms = JSON.parse(filmsWatched);
       
-      const parseQueQueFilms = JSON.parse(filmsQueque);
+      const parseQuequeFilms = JSON.parse(filmsQueque);
 
-    return parseWatchedFilms.concat(parseQueQueFilms)
+    return parseWatchedFilms.concat(parseQuequeFilms)
   }
   if (filmsWatched) {
     return JSON.parse(filmsWatched)
