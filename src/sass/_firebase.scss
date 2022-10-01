@@ -15,7 +15,7 @@
 
 .reg-btn {
   position: relative;
-  font-size: 12px;
+  font-size: 15px;
   font-weight: 500;
   line-height: 1.17;
   text-transform: uppercase;
@@ -23,6 +23,10 @@
   background-color: transparent;
   border: none;
   cursor: pointer;
+}
+
+.name-button {
+  font-size: 20px;
 }
 
 .backdrop {
