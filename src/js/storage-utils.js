@@ -1,5 +1,6 @@
 import Notiflix from 'notiflix';
 import { changeBtnStatus } from './watched-list';
+import {changeBtnStatusQueue} from './queued-list';
 
 Notiflix.Notify.init({
   width: '280px',
@@ -19,11 +20,14 @@ const saveList = (key, value, typeBtn) => {
       ? Notiflix.Notify.success('Your movie has been added to the library')
       : Notiflix.Notify.success('Your movie remove from library');
     changeBtnStatus();
+    // for queue btn
+    changeBtnStatusQueue ();
   } catch (error) {
     console.error('Set state error: ', error.message);
     Notiflix.Notify.failure('Failed to add to library');
   }
 };
+
 
 const loadList = key => {
   try {
