@@ -29,12 +29,12 @@ function onClickFilmStorage(e) {
     film => film.id === Number(chosenFilm.id)
   );
 
-  refs.card.innerHTML = renderModalCard(selectedFilm);
-  onOpenModal();
-
-  if (chosenFilm.nodeName !== 'LI') {
+   if (chosenFilm.nodeName !== 'LI') {
     return;
   }
+
+  refs.card.innerHTML = renderModalCard(selectedFilm);
+  onOpenModal();
 }
 
 function onOpenModal() {
