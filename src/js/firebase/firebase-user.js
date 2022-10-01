@@ -46,6 +46,7 @@ export default class User {
         sighUpHeader.classList.add('is-hidden');
         sighOut.classList.remove('is-hidden');
         Notify.success(`User is created 🤘`);
+        localStorage.setItem('email', userData.email);
       })
       .catch(error => {
         const errorCode = error.code;
@@ -75,6 +76,7 @@ export default class User {
         sighInHeader.classList.add('is-hidden');
         sighUpHeader.classList.add('is-hidden');
         sighOut.classList.remove('is-hidden');
+        localStorage.setItem('email', userData.email);
       })
       .catch(error => {
         const errorCode = error.code;

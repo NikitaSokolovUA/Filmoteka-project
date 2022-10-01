@@ -14,6 +14,20 @@ const modalAuth = document.querySelector('[data-auth-modal]');
 const sighUpHeader = document.querySelector('[data-reg-modal-open]');
 const sighInHeader = document.querySelector('[data-auth-modal-open]');
 const nameUserHeader = document.querySelector('#name-user');
+const libBtn = document.querySelector('#library');
+
+onAuthStateChanged(auth, user => {
+  const email = localStorage.getItem('email');
+  if (user) {
+    nameUserHeader.innerHTML += email;
+    sighInHeader.classList.add('is-hidden');
+    sighUpHeader.classList.add('is-hidden');
+    sighOut.classList.remove('is-hidden');
+  } else {
+    // User is signed out
+    // ...
+  }
+});
 
 sighUp.addEventListener('click', onSighUp);
 function onSighUp(e) {
@@ -31,7 +45,6 @@ function onSighUp(e) {
 sighIn.addEventListener('click', onSighIn);
 function onSighIn(e) {
   e.preventDefault();
-
   const email = document.getElementById('email-reg').value;
   const password = document.getElementById('password-reg').value;
   const userData = {
