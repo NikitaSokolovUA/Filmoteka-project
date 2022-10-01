@@ -4,8 +4,9 @@ import FilmsPagination from './pagination';
 
 const watchedListBtn = document.querySelector('.watched-btn-js');
 
-function loadWatchedFilms() {
+export function loadWatchedFilms() {
   watchedListBtn.classList.add('active-js');
+
   const watchedFilms = JSON.parse(localStorage.getItem(watchedKeyStorage));
   if (watchedFilms) {
     renderFilmCard(watchedFilms.slice(0, 20));
