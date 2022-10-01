@@ -14,8 +14,9 @@ const filmList = document.querySelector('.film__list');
 
 export function loadWatchedFilms() {
   watchedListBtn.classList.add('active-js');
+
   filmList.innerHTML = '';
-  
+
   const watchedFilms = JSON.parse(localStorage.getItem(watchedKeyStorage));
   if (watchedFilms) {
     renderFilmCard(watchedFilms.slice(0, 20));
