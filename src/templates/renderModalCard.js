@@ -20,10 +20,15 @@ export default function renderModalCard(film) {
     ? (watchedBtnText = 'add to Watched')
     : (watchedBtnText = 'delete from watched');
 
+  let poster = '';
+  if (poster_path === null) {
+    poster =  `src = "https://upload.wikimedia.org/wikipedia/commons/4/43/Illustration_of_an_image.png"`
+    } else poster = `src ="${BASE_URL}${poster_path}"`  
+  
   return `<div class="modal__image-container" id='${id}'>
         <img
           class="modal__image"
-          src="${BASE_URL}${poster_path}"
+          ${poster}
           alt="Poster ${title}"
         />
       </div>
