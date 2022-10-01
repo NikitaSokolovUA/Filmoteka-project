@@ -14,9 +14,9 @@ const sighInHeader = document.querySelector('[data-auth-modal-open]');
 const nameUserHeader = document.querySelector('#name-user');
 
 onAuthStateChanged(auth, user => {
-  const email = localStorage.getItem('email');
+  const name = localStorage.getItem('name');
   if (user) {
-    nameUserHeader.innerHTML += email;
+    nameUserHeader.innerHTML = name;
     sighInHeader.classList.add('is-hidden');
     sighUpHeader.classList.add('is-hidden');
     sighOut.classList.remove('is-hidden');
@@ -31,9 +31,11 @@ function onSighUp(e) {
   e.preventDefault();
   const email = document.getElementById('email-reg').value;
   const password = document.getElementById('password-reg').value;
+  const name = document.getElementById('name-reg').value;
   const userData = {
     email: email,
     password: password,
+    name: name,
   };
   const user = new User(userData);
   user.sighUp();
@@ -44,9 +46,11 @@ function onSighIn(e) {
   e.preventDefault();
   const email = document.getElementById('email-reg').value;
   const password = document.getElementById('password-reg').value;
+  const name = document.getElementById('name-reg').value;
   const userData = {
     email: email,
     password: password,
+    name: name,
   };
   const user = new User(userData);
   user.sighIn();

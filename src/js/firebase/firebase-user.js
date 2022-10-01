@@ -30,23 +30,37 @@ export default class User {
   }
 
   sighUp() {
+    if (
+      !this.userData.email ||
+      !this.userData.password ||
+      !this.userData.name
+    ) {
+      Notify.failure('Please enter your email, password or name');
+      return;
+    }
+
+    if (this.userData.password.length !== 6) {
+      Notify.failure('Password is too short!');
+      return;
+    }
+
     createUserWithEmailAndPassword(
       auth,
       this.userData.email,
-      this.userData.password
+      this.userData.password,
+      this.userData.name
     )
       .then(userCredential => {
         let userName;
         const user = userCredential.user;
         set(ref(db, 'users/' + user.uid + '/auth/'), this.userData);
-        userName = `${this.userData.email}`;
-        nameUserHeader.innerHTML = userName;
+        nameUserHeader.innerHTML = `${this.userData.name}`;
         modalReg.classList.toggle('is-hidden');
         sighInHeader.classList.add('is-hidden');
         sighUpHeader.classList.add('is-hidden');
         sighOut.classList.remove('is-hidden');
         Notify.success(`User is created 🤘`);
-        localStorage.setItem('email', this.userData.email);
+        localStorage.setItem('name', this.userData.name);
       })
       .catch(error => {
         const errorCode = error.code;
@@ -57,10 +71,15 @@ export default class User {
 
   sighIn() {
     const user = auth.currentUser;
+    if (!this.userData.email || !this.userData.password) {
+      Notify.failure('Please enter your email and password');
+      return;
+    }
     signInWithEmailAndPassword(
       auth,
       this.userData.email,
-      this.userData.password
+      this.userData.password,
+      this.userData.name
     )
       .then(userCredential => {
         const user = userCredential.user;
@@ -69,14 +88,13 @@ export default class User {
         update(ref(db, 'users/' + user.uid), {
           last_login: lgDate,
         });
-        userName = `${this.userData.email}`;
-        nameUserHeader.innerHTML = userName;
+        nameUserHeader.innerHTML = `${this.userData.name}`;
         modalAuth.classList.toggle('is-hidden');
         Notify.success(`You're welcome! 🙂`);
         sighInHeader.classList.add('is-hidden');
         sighUpHeader.classList.add('is-hidden');
         sighOut.classList.remove('is-hidden');
-        localStorage.setItem('email', this.userData.email);
+        localStorage.setItem('name', this.userData.name);
       })
       .catch(error => {
         const errorCode = error.code;
