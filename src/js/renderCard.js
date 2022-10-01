@@ -29,8 +29,7 @@ export default async function renderFilmCard(films) {
 
       let poster = '';
       if (poster_path === null) {
-        poster =  `src = "https://upload.wikimedia.org/wikipedia/commons/6/65/No-Image-Placeholder.svg"`
-
+        poster =  `src = "https://upload.wikimedia.org/wikipedia/commons/4/43/Illustration_of_an_image.png"`
       } else poster = `src ="${BASE_URL}${poster_path}"`
       
       //  верстка готової карточки фільма
@@ -57,13 +56,9 @@ function addIdToGanres(ids) {
   const parsedGanres = JSON.parse(getGenres);
   const addGenresArray = [];
 
-  // <<<<<<< HEAD
-  // =======
   if (ids.length === 0) {
     return 'Some Ganres';
   }
-
-  // >>>>>>> main
 
   parsedGanres.map(ganre => {
     ids.map(id => {
