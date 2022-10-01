@@ -29,12 +29,12 @@ function onClickFilmStorage(e) {
     film => film.id === Number(chosenFilm.id)
   );
 
-  refs.card.innerHTML = renderModalCard(selectedFilm);
-  onOpenModal();
-
-  if (chosenFilm.nodeName !== 'LI') {
+   if (chosenFilm.nodeName !== 'LI') {
     return;
   }
+
+  refs.card.innerHTML = renderModalCard(selectedFilm);
+  onOpenModal();
 }
 
 function onOpenModal() {
@@ -68,9 +68,19 @@ function inKeyDownEscModalClose(event) {
 
 function backListFromStorages() {
   const filmsWatched = localStorage.getItem('watchedKey');
-  const parseWatchedFilms = JSON.parse(filmsWatched);
   const filmsQueque = localStorage.getItem('queuedKey');
-  const parseQueQueFilms = JSON.parse(filmsQueque);
+  if (filmsWatched && filmsQueque) {
+      
+      const parseWatchedFilms = JSON.parse(filmsWatched);
+      
+      const parseQueQueFilms = JSON.parse(filmsQueque);
 
-  return parseWatchedFilms.concat(parseQueQueFilms)
+    return parseWatchedFilms.concat(parseQueQueFilms)
+  }
+  if (filmsWatched) {
+    return JSON.parse(filmsWatched)
+  }
+  if (filmsQueque) {
+    return JSON.parse(filmsQueque)
+  }
 }
