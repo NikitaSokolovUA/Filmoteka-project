@@ -18,21 +18,13 @@ refs.listOfFilm.addEventListener('click', onClickFilmStorage);
 refs.closeModalBtn.addEventListener('click', onCloseModal);
 refs.modal.addEventListener('click', onClickBackdropModalClose);
 
+
+
+  const allFilms = backListFromStorages()
+
 function onClickFilmStorage(e) {
   const chosenFilm = e.target.parentNode.parentNode;
 
-  
-
-  const filmsWatched = localStorage.getItem('watchedKey');
-  const parseWatchedFilms = JSON.parse(filmsWatched);
-  const filmsQueque = localStorage.getItem('queuedKey');
-  const parseQueQueFilms = JSON.parse(filmsQueque);
-
-  const allFilms = parseWatchedFilms.concat(parseQueQueFilms)
-
-
-
-//tut
   const selectedFilm = allFilms.find(
     film => film.id === Number(chosenFilm.id)
   );
@@ -74,3 +66,11 @@ function inKeyDownEscModalClose(event) {
   }
 }
 
+function backListFromStorages() {
+  const filmsWatched = localStorage.getItem('watchedKey');
+  const parseWatchedFilms = JSON.parse(filmsWatched);
+  const filmsQueque = localStorage.getItem('queuedKey');
+  const parseQueQueFilms = JSON.parse(filmsQueque);
+
+  return parseWatchedFilms.concat(parseQueQueFilms)
+}
