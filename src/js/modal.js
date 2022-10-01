@@ -5,22 +5,16 @@ import {
   removeWatchedBtnListener,
 } from './watched-list';
 
-
-
 // імпорт для кнопки add to queue
-import {
-  addQueuedBtnListener,
-  removeQueuedBtnListener,
-} from './queued-list';
+import { addQueuedBtnListener, removeQueuedBtnListener } from './queued-list';
 
 const refs = {
   modal: document.querySelector('[data-modal]'),
   closeModalBtn: document.querySelector('[data-modal-close]'),
   listOfFilm: document.querySelector('.film__list'),
   card: document.querySelector('.modal__container'),
-  body: document.querySelector('body')
+  body: document.querySelector('body'),
 };
-
 
 refs.listOfFilm.addEventListener('click', onClickFilm);
 refs.closeModalBtn.addEventListener('click', onCloseModal);

@@ -1,12 +1,17 @@
-import renderModalCard from '../templates/renderModalCard'
+import renderModalCard from '../templates/renderModalCard';
 // import defaultExport, * as name  from './modal'
+import {
+  addWatchedBtnListener,
+  removeWatchedBtnListener,
+} from './watched-list';
+import { loadWatchedFilms } from './library_watched';
 
 const refs = {
   modal: document.querySelector('[data-modal]'),
   closeModalBtn: document.querySelector('[data-modal-close]'),
   listOfFilm: document.querySelector('.film__list'),
   card: document.querySelector('.modal__container'),
-  body: document.querySelector('body')
+  body: document.querySelector('body'),
 };
 
 refs.listOfFilm.addEventListener('click', onClickFilmStorage);
@@ -16,11 +21,13 @@ refs.modal.addEventListener('click', onClickBackdropModalClose);
 function onClickFilmStorage(e) {
   const chosenFilm = e.target.parentNode.parentNode;
 
-  const films = localStorage.getItem('watchedKey')
-  const parseFilms = JSON.parse(films)
-  
-  const selectedFilm = parseFilms.find(film => film.id === Number(chosenFilm.id))
-  
+  const films = localStorage.getItem('watchedKey');
+  const parseFilms = JSON.parse(films);
+
+  const selectedFilm = parseFilms.find(
+    film => film.id === Number(chosenFilm.id)
+  );
+
   refs.card.innerHTML = renderModalCard(selectedFilm);
   onOpenModal();
 
@@ -33,14 +40,15 @@ function onOpenModal() {
   window.addEventListener('keydown', inKeyDownEscModalClose);
   refs.modal.classList.toggle('backdrop--is-hidden');
   refs.body.classList.toggle('modal-open');
-  // addWatchedBtnListener();
+  addWatchedBtnListener();
 }
 
 function onCloseModal() {
   window.removeEventListener('keydown', inKeyDownEscModalClose);
   refs.modal.classList.toggle('backdrop--is-hidden');
   refs.body.classList.toggle('modal-open');
-  // removeWatchedBtnListener();
+  removeWatchedBtnListener();
+  loadWatchedFilms();
 }
 
 function onClickBackdropModalClose(event) {

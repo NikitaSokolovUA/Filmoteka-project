@@ -35,6 +35,8 @@
   z-index: 4;
   opacity: 1;
   transition: opacity 250ms ease-in-out;
+  overflow-x: hidden;
+  overflow-y: hidden;
 }
 
 .backdrop.is-hidden {
