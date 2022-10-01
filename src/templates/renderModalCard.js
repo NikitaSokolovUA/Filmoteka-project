@@ -1,3 +1,4 @@
+import { isMovieOnList } from '../js/watched-list';
 const BASE_URL = 'https://image.tmdb.org/t/p/w500';
 
 export default function renderModalCard(film) {
@@ -12,6 +13,12 @@ export default function renderModalCard(film) {
     overview,
     title,
   } = film;
+
+  let watchedBtnText;
+  const watchedBtnAction = isMovieOnList(id);
+  watchedBtnAction === 'add'
+    ? (watchedBtnText = 'add to Watched')
+    : (watchedBtnText = 'delete from watched');
 
   return `<div class="modal__image-container" id='${id}'>
         <img
@@ -54,7 +61,7 @@ export default function renderModalCard(film) {
             </p>
           </div>
           <div class="film-btn__wrapper">
-            <button class="film-button add-watchedbtn-js" type="button" data-id="${id}" data-action="add" >add to Watched</button>
+            <button class="film-button add-watchedbtn-js" type="button" data-id="${id}" data-action="${watchedBtnAction}" >${watchedBtnText}</button>
             <button class="film-button add-queuedbtn-js" type="button" data-id="${id}" data-action="add" >add to queue</button>
           </div>
         </div>`;

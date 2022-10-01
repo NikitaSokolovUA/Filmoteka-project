@@ -12,9 +12,10 @@ Notiflix.Notify.init({
 const watchedListBtn = document.querySelector('.watched-btn-js');
 const filmList = document.querySelector('.film__list');
 
-function loadWatchedFilms() {
+export function loadWatchedFilms() {
   watchedListBtn.classList.add('active-js');
   filmList.innerHTML = '';
+  
   const watchedFilms = JSON.parse(localStorage.getItem(watchedKeyStorage));
   if (watchedFilms) {
     renderFilmCard(watchedFilms.slice(0, 20));
