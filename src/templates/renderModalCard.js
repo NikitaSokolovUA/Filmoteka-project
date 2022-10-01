@@ -55,9 +55,11 @@ export default function renderModalCard(film) {
         </ul>
         <div class="film-about__wrapper">
           <h3 class="film-about__title">About</h3>
-          <p class="film-about__text">
+          <div class="film-about-text__wrapper">
+            <p class="film-about__text">
             ${addAudit(overview)}
-          </p>
+            </p>
+          </div>
           <div class="film-btn__wrapper">
             <button class="film-button add-watchedbtn-js" type="button" data-id="${id}" data-action="${watchedBtnAction}" >${watchedBtnText}</button>
             <button class="film-button add-queuedbtn-js" type="button" data-id="${id}" data-action="add" >add to queue</button>
