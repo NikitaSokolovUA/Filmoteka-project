@@ -39,7 +39,7 @@ export default class User {
       return;
     }
 
-    if (this.userData.password.length !== 6) {
+    if (this.userData.password.length < 6) {
       Notify.failure('Password is too short!');
       return;
     }
