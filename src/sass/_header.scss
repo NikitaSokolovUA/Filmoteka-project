@@ -95,9 +95,10 @@
   margin-right: 40px;
 }
 
-.form-field {
+.form-field-search {
   display: flex;
   justify-content: center;
+  flex-direction: row;
 }
 
 .input-field {
