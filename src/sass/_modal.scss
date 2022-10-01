@@ -8,6 +8,7 @@
   padding-bottom: 20px;
   background-color: rgba(0, 0, 0, 0.2);
   z-index: 3500;  
+  overflow: scroll;
 }
 
 .backdrop.backdrop--is-hidden {
@@ -28,7 +29,8 @@ body.modal-open {
   
   background-color: #fff;
   padding: 48px 20px 40px 20px;
-  
+  z-index: 999;
+  border-radius: 4px;
 
   @include mq(mobile-only){
     height: 100%;
@@ -37,7 +39,6 @@ body.modal-open {
   @include mq(tablet) {
     width: 704px;
     padding: 40px 72px 40px 36px;
-    //
     min-height: 552px;
   }
 
