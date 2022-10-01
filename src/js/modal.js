@@ -21,7 +21,8 @@ refs.closeModalBtn.addEventListener('click', onCloseModal);
 refs.modal.addEventListener('click', onClickBackdropModalClose);
 
 async function onClickFilm(e) {
-  const chosenFilm = e.target.parentNode.parentNode;
+  try {
+    const chosenFilm = e.target.parentNode.parentNode;
 
   const fls = new FilmsLoadService();
   fls.id = chosenFilm.id;
@@ -32,7 +33,12 @@ async function onClickFilm(e) {
   }
 
   refs.card.innerHTML = renderModalCard(data);
-  onOpenModal();
+    onOpenModal();
+  }
+  catch (err) {
+    console.error('Set state error: ', err.message);
+    Notiflix.Notify.failure('Sorry some problems on Server');
+  }
 }
 
 function onOpenModal() {
