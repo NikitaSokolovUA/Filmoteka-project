@@ -21,10 +21,19 @@ refs.modal.addEventListener('click', onClickBackdropModalClose);
 function onClickFilmStorage(e) {
   const chosenFilm = e.target.parentNode.parentNode;
 
-  const films = localStorage.getItem('watchedKey');
-  const parseFilms = JSON.parse(films);
+  
 
-  const selectedFilm = parseFilms.find(
+  const filmsWatched = localStorage.getItem('watchedKey');
+  const parseWatchedFilms = JSON.parse(filmsWatched);
+  const filmsQueque = localStorage.getItem('queuedKey');
+  const parseQueQueFilms = JSON.parse(filmsQueque);
+
+  const allFilms = parseWatchedFilms.concat(parseQueQueFilms)
+
+
+
+//tut
+  const selectedFilm = allFilms.find(
     film => film.id === Number(chosenFilm.id)
   );
 
@@ -64,3 +73,4 @@ function inKeyDownEscModalClose(event) {
     onCloseModal();
   }
 }
+

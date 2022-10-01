@@ -18,6 +18,7 @@ async function onSearch(event) {
 
   if (filmsSearch.query === '') {
     Notiflix.Notify.info('&#128519 Please, complete the search field!');
+    warningText.innerHTML = '';
     printText(
       'Search result not successful. Enter the correct movie name and try again',
       warningText,
@@ -30,6 +31,7 @@ async function onSearch(event) {
   try {
     if (filmsResponse.total_results === 0) {
       Notiflix.Notify.failure('&#128561 Оh my god, what do you want?');
+      warningText.innerHTML = '';
       printText(
         'Search result not successful. Enter the correct movie name and try again',
         warningText,

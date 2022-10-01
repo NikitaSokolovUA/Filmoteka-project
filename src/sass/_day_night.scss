@@ -22,8 +22,8 @@ body {
   right: 25px;
   top: 15px;
   position: absolute;
-  width: 50px;
-  height: 30px;
+  width: 40px;
+  height: 20px;
   background-color: $black-color;
   border-radius: 30px;
   border: 0.2px solid $grey-color;
@@ -34,22 +34,47 @@ body {
   cursor: pointer;
 
   @media screen and (min-width: 768px) {
-    right: 38px;
-    top: 15px;
+    right: 32px;
+    top: 150px;
+    width: 45px;
+    height: 25px;
   }
 }
 
 .tumbler {
   position: absolute;
-  height: 20px;
-  width: 20px;
+  height: 15px;
+  width: 15px;
   border-radius: 50%;
-  background-color: $white-color;
+  background-color: $background-color;
   transition: transform 0.5s, background-color 0.5s;
   will-change: transform;
+
+  @media screen and (min-width: 768px) {
+    width: 17px;
+    height: 17px;
+  }
 }
 
 .icon-theme {
-  fill: white;
+  fill: $night-title;
+  width: 12px;
+  height: 12px;
+  @media screen and (min-width: 768px) {
+    width: 15px;
+    height: 15px;
+  }
+}
+
+.film__title-main {
+  &.night-mode {
+    color: $night-title;
+  }
+}
+
+.backdrop__modal {
+  &.night-mode {
+    background-color: $night-title;
+  }
 }
 //
