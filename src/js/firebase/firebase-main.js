@@ -9,12 +9,9 @@ const user = auth.currentUser;
 const sighUp = document.querySelector('#sighup-modal');
 const sighIn = document.querySelector('#sighin-modal');
 const sighOut = document.querySelector('#sighout');
-const modalReg = document.querySelector('[data-reg-modal]');
-const modalAuth = document.querySelector('[data-auth-modal]');
 const sighUpHeader = document.querySelector('[data-reg-modal-open]');
 const sighInHeader = document.querySelector('[data-auth-modal-open]');
 const nameUserHeader = document.querySelector('#name-user');
-const libBtn = document.querySelector('#library');
 
 onAuthStateChanged(auth, user => {
   const email = localStorage.getItem('email');

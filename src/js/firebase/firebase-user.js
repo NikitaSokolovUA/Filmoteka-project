@@ -40,13 +40,13 @@ export default class User {
         const user = userCredential.user;
         set(ref(db, 'users/' + user.uid + '/auth/'), this.userData);
         userName = `${this.userData.email}`;
-        nameUserHeader.innerHTML += userName;
+        nameUserHeader.innerHTML = userName;
         modalReg.classList.toggle('is-hidden');
         sighInHeader.classList.add('is-hidden');
         sighUpHeader.classList.add('is-hidden');
         sighOut.classList.remove('is-hidden');
         Notify.success(`User is created 🤘`);
-        localStorage.setItem('email', userData.email);
+        localStorage.setItem('email', this.userData.email);
       })
       .catch(error => {
         const errorCode = error.code;
@@ -70,13 +70,13 @@ export default class User {
           last_login: lgDate,
         });
         userName = `${this.userData.email}`;
-        nameUserHeader.innerHTML += userName;
+        nameUserHeader.innerHTML = userName;
         modalAuth.classList.toggle('is-hidden');
         Notify.success(`You're welcome! 🙂`);
         sighInHeader.classList.add('is-hidden');
         sighUpHeader.classList.add('is-hidden');
         sighOut.classList.remove('is-hidden');
-        localStorage.setItem('email', userData.email);
+        localStorage.setItem('email', this.userData.email);
       })
       .catch(error => {
         const errorCode = error.code;
