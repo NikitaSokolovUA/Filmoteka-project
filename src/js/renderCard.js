@@ -19,22 +19,27 @@ export default async function renderFilmCard(films) {
     .map(({ id, poster_path, title, genre_ids, release_date }) => {
       //  приведення дати до шаблону
       let date = '';
-      if (release_date === '') {
+
+      if (release_date === "") {
         date = 'no release date';
       } else date = release_date.slice(0, 4);
       //  перетворення id-жанрів у нормальні назви
-
-      const genre = addIdToGanres(genre_ids);
+     
+      const genre = addIdToGanres(genre_ids)
 
       let poster = '';
       if (poster_path === null) {
-        poster = `src = "https://upload.wikimedia.org/wikipedia/commons/6/65/No-Image-Placeholder.svg"`;
-      } else poster = `src ="${BASE_URL}${poster_path}"`;
+        poster =  `src = "https://upload.wikimedia.org/wikipedia/commons/6/65/No-Image-Placeholder.svg"`
+
+      } else poster = `src ="${BASE_URL}${poster_path}"`
+      
       //  верстка готової карточки фільма
       return `
         <li class="film__card" id=${id}>
           <div class="film__poster">
-            <img class="film__image" ${poster} alt="${title}" loading="lazy" />
+
+            <img class="film__image" ${(poster)} alt="${title}" loading="lazy" />
+
           </div>
           <div class="film__info">
             <p class="film__title-main">${addAudit(title)}</p>
