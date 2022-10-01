@@ -25,19 +25,25 @@ body.modal-open {
   left: 50%;
   transform: translate(-50%, -50%);
   width: 280px;
-  height: 100%;
+  
   background-color: #fff;
   padding: 48px 20px 40px 20px;
   z-index: 999;
   border-radius: 4px;
 
+  @include mq(mobile-only){
+    height: 100%;
+  }
+
   @include mq(tablet) {
     width: 704px;
     padding: 40px 72px 40px 36px;
+    min-height: 552px;
   }
 
   @include mq(desktop) {
     width: 806px;
     padding: 40px 12px;
+    min-height: 558px;
   }
 }
