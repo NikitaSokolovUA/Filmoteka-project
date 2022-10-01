@@ -34,3 +34,15 @@
     background-color: $grey-color;
   }
 }
+
+#my-pagination .tui-page-btn {
+  &.night-mode {
+    background-color: $night-title;
+  }
+}
+
+#my-pagination .tui-is-selected {
+  background: $accent-color;
+  border-color: $accent-color;
+  color: $white-color;
+}

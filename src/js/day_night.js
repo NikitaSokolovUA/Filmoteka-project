@@ -15,4 +15,10 @@ function onChangeTheme() {
   document
     .getElementsByClassName('backdrop__modal')[0]
     .classList.toggle('night-mode');
+  for (el of document.getElementsByClassName('tui-page-btn')) {
+    el.classList.toggle('night-mode');
+  }
+  document
+    .getElementsByClassName('tui-is-selected')[0]
+    .classList.toggle('night-mode');
 }
