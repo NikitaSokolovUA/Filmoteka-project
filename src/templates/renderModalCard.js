@@ -55,7 +55,7 @@ export default function renderModalCard(film) {
           </div>
           <div class="film-btn__wrapper">
             <button class="film-button add-watchedbtn-js" type="button" data-id="${id}" data-action="add" >add to Watched</button>
-            <button class="film-button" type="button">add to queue</button>
+            <button class="film-button add-queuedbtn-js" type="button" data-id="${id}" data-action="add" >add to queue</button>
           </div>
         </div>`;
 }
