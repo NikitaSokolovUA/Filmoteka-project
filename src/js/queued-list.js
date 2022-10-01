@@ -1,5 +1,5 @@
 import FilmsLoadService from './films-request';
-import { saveList, loadList } from './storage-utils';
+import { saveListQ, loadListQ } from './storage-utils';
 import Notiflix from 'notiflix';
 Notiflix.Notify.init({
   width: '280px',
@@ -47,7 +47,10 @@ function addQueuedBtnClick(evt) {
 // функція перевірки наявності фільму у переліку
 
 export function isMovieOnList(movieId) {
-  const items = loadList(queuedKeyStorage);
+  const items = loadListQ(queuedKeyStorage);
+  if (!items) {
+    return 'add';
+  }
   const index = items.findIndex(item => item.id === movieId);
   return index === -1 ? 'add' : 'remove';
 }
@@ -56,45 +59,49 @@ export function isMovieOnList(movieId) {
 async function onQueuedList(movieId) {
   try {
     moviesLoads.id = movieId;
-    console.log('moviesLoads', moviesLoads.id);
+    // console.log('moviesLoads', moviesLoads.id);
 
     const response = await moviesLoads.requestFilmDetails();
     response['genre_ids'] = response['genres'].map(obj => obj.id);
-    console.log(response);
+    // console.log(response);
     addItemToList(response);
   } catch (error) {
     console.error(error);
   }
 }
 
-// додаємо до переліку
+// додаємо до переліку - Your movie is added to queued
+
 function addItemToList(data) {
-  const items = loadList(queuedKeyStorage);
-  if (!items) {
+  const items = loadListQ(queuedKeyStorage);
+  if (!items || items.length == 0) {
     const storageListArray = [];
     storageListArray.push(data);
-    saveList(queuedKeyStorage, storageListArray, true);
+    saveListQ(queuedKeyStorage, storageListArray, true);
   } else {
-    const index = items.findIndex(item => item.id === data.id);
-
-    if (index !== -1) {
-      Notiflix.Notify.warning('Your movie is added to queued');
-      return;
-    }
     items.push(data);
-    saveList(queuedKeyStorage, items, true);
+    saveListQ(queuedKeyStorage, items, true);
   }
 }
 
 // видаляємо з переліку
 function removeItemFromList(movieId) {
-  const items = loadList(queuedKeyStorage);
-  const index = items.findIndex(item => item.id === movieId);
+  const items = loadListQ(queuedKeyStorage);
+  const index = items.findIndex(item => item.id === Number(movieId));
 
   if (index === -1) {
     return;
   }
   items.splice(index, 1);
-  saveList(queuedKeyStorage, items);
+  saveListQ(queuedKeyStorage, items);
+}
+export function changeBtnStatusQueue() {
+  const statusBtnQ = queuedBtnEl.dataset.action;
+  statusBtnQ === 'add'
+    ? ((queuedBtnEl.dataset.action = 'remove'),
+      (queuedBtnEl.textContent = 'delete from queued'))
+    : ((queuedBtnEl.dataset.action = 'add'),
+      (queuedBtnEl.textContent = 'add to queued'));
 }
 export { queuedKeyStorage };
+
