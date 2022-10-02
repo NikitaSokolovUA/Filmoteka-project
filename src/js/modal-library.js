@@ -43,7 +43,7 @@ function onOpenModal() {
   refs.modal.classList.toggle('backdrop--is-hidden');
   refs.body.classList.toggle('modal-open');
   addWatchedBtnListener();
-   addQueuedBtnListener();
+  addQueuedBtnListener();
 }
 
 function onCloseModal() {

@@ -24,8 +24,8 @@ export default function renderModalCard(film) {
   let queueBtnText;
   const queueBtnAction = isMovieOnListQue(id);
   queueBtnAction === 'add'
-    ? (queueBtnText = 'add to Watched')
-    : (queueBtnText = 'delete from watched');
+    ? (queueBtnText = 'add to Queued')
+    : (queueBtnText = 'delete from Queued');
   
   
 
@@ -91,3 +91,4 @@ function addAudit(string) {
   }
   return string;
 }
+
