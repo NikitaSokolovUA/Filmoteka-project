@@ -5,3 +5,51 @@
   color: $accent-color;
   cursor: pointer;
 }
+
+.team-box {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  height: 100%;
+
+  @media screen and (max-width: 479px) {
+    width: calc(100% - 10px);
+  }
+  @media screen and (min-width: 768px) {
+    width: 420px;
+    font-size: 15px;
+  }
+  @media screen and (min-width: 1200px) {
+    width: calc(100% - 10px);
+    font-size: 15px;
+  }
+}
+
+.team-person {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 75px;
+  margin-right: 5px;
+  margin-bottom: 10px;
+  font-weight: 500;
+  transition: box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  p {
+    background-color: rgba(128, 128, 128, 0.281);
+    text-align: center;
+    margin-top: 5px;
+  }
+  @media screen and (min-width: 768px) {
+    width: 90px;
+  }
+  @media screen and (min-width: 1200px) {
+    width: 150px;
+  }
+
+  &:hover {
+    transform: scale(1.01);
+    box-shadow: 0 3px 7px 3px #6e628cc2, 0 1px 1px #00000024,
+      0 2px 1px -1px #0000001f;
+  }
+}
