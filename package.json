@@ -5,7 +5,7 @@
   "homepage": "https://NikitaSokolovUA.github.io/Filmoteka-project",
   "scripts": {
     "start": "parcel src/*.html",
-    "build": "parcel build src/*.html --public-url /Filmoteka-projet/"
+    "build": "parcel build src/*.html --public-url /Filmoteka-project/"
   },
   "repository": {
     "type": "git",
