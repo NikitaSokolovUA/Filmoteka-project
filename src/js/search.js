@@ -13,10 +13,12 @@ searchForm.addEventListener('submit', onSearch);
 //************Function onSearch****************/////
 async function onSearch(event) {
   event.preventDefault();
+  const oldSearchQuery = filmsSearch.query;
   filmsSearch.query = event.currentTarget.elements.searchQuery.value;
   filmsSearch.resetPage();
 
   if (filmsSearch.query === '') {
+    filmsSearch.query = oldSearchQuery;
     Notiflix.Notify.info('&#128519 Please, complete the search field!');
     warningText.innerHTML = '';
     printText(
@@ -30,6 +32,7 @@ async function onSearch(event) {
   const filmsResponse = await filmsSearch.requestFilms();
   try {
     if (filmsResponse.total_results === 0) {
+      filmsSearch.query = oldSearchQuery;
       Notiflix.Notify.failure('&#128561 Оh my god, what do you want?');
       warningText.innerHTML = '';
       printText(
