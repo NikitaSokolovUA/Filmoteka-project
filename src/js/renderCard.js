@@ -4,14 +4,17 @@ const gallery = document.querySelector('.film__list');
 const BASE_URL = 'https://image.tmdb.org/t/p/w500';
 const filmsLoadService = new FilmsLoadService();
 
-export default async function renderFilmCard(films) {
+export default async function renderFilmCard(films, dataAtribute) {
   // отримання масиву id-жанрів разом з назвами
+  console.log(dataAtribute);
 
   if (!localStorage.getItem('ids')) {
     const responceGenres = await filmsLoadService.requestGenres();
     const getGenres = await responceGenres.genres;
     localStorage.setItem('ids', JSON.stringify(getGenres));
   }
+
+  
 
   // рендер карточки фільма та створення фільмотеки
   gallery.innerHTML = '';
@@ -34,7 +37,7 @@ export default async function renderFilmCard(films) {
       
       //  верстка готової карточки фільма
       return `
-        <li class="film__card" id=${id}>
+        <li class="film__card" id=${id} ${expectedAtribut(dataAtribute)}>
           <div class="film__poster">
 
             <img class="film__image" ${(poster)} alt="${title}" loading="lazy" />
@@ -82,3 +85,11 @@ function addAudit(string) {
   }
   return string;
 }
+
+
+function expectedAtribut(data) {
+    if (data) {
+    return `data-action='${data}'`
+    }
+    return ''
+  }
