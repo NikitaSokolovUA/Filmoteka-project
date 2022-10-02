@@ -20,69 +20,69 @@
     <!-- <script type="module" src="./index.js"></script> -->
   </head>
   <body>
-    <a id="button" class="button-up"></a>
-    <!-- -- Тема день/ночь -- -->
-    <include src="./partials/day_night.html"></include>
-    <!------>
-    <header class="header-library">
-      <div class="container header-container">
-        <div class="header-nav">
-          <a class="logo link" href="/src/index.html"
-            ><svg class="icon animate__animated">
-              <use href="./images/symbol-defs.svg#icon-film"></use>
-            </svg>
-            <span class="header-title">Filmoteka</span></a
-          >
+    <div class="wrapper">
+      <a id="button" class="button-up"></a>
+      <!-- -- Тема день/ночь -- -->
+      <include src="./partials/day_night.html"></include>
+      <!------>
+      <header class="header-library">
+        <div class="container header-container">
+          <div class="header-nav">
+            <a class="logo link" href="/src/index.html"
+              ><svg class="icon animate__animated">
+                <use href="./images/symbol-defs.svg#icon-film"></use>
+              </svg>
+              <span class="header-title">Filmoteka</span></a
+            >
 
-          <nav>
-            <ul class="menu">
-              <li class="list menu-list">
-                <a class="link" href="./index.html">home</a>
+            <nav>
+              <ul class="menu">
+                <li class="list menu-list">
+                  <a class="link" href="./index.html">home</a>
+                </li>
+                <li class="list">
+                  <a class="link link-active" href="">my library</a>
+                </li>
+              </ul>
+            </nav>
+          </div>
+
+          <div class="list-btn">
+            <button class="lib-btn watched-btn-js">WATCHED</button>
+            <button class="lib-btn queued-btn-js">QUEUE</button>
+          </div>
+          <div class="registration">
+            <ul class="list menu">
+              <li>
+                <button
+                  type="button"
+                  class="name-button reg-btn"
+                  id="name-user"
+                ></button>
               </li>
-              <li class="list">
-                <a class="link link-active" href="">my library</a>
+              <li>
+                <button class="menu-list reg-btn" data-reg-modal-open>
+                  sigh up
+                </button>
+              </li>
+              <li>
+                <button class="reg-btn" data-auth-modal-open>sigh in</button>
+              </li>
+              <li>
+                <button type="button" class="reg-btn is-hidden" id="sighout">
+                  Sigh out
+                </button>
               </li>
             </ul>
-          </nav>
+          </div>
         </div>
-
-        <div class="list-btn">
-          <button class="lib-btn watched-btn-js">WATCHED</button>
-          <button class="lib-btn queued-btn-js">QUEUE</button>
-        </div>
-        <div class="registration">
-          <ul class="list menu">
-            <li>
-              <button
-                type="button"
-                class="name-button reg-btn"
-                id="name-user"
-              ></button>
-            </li>
-            <li>
-              <button class="menu-list reg-btn" data-reg-modal-open>
-                sigh up
-              </button>
-            </li>
-            <li>
-              <button class="reg-btn" data-auth-modal-open>sigh in</button>
-            </li>
-            <li>
-              <button type="button" class="reg-btn is-hidden" id="sighout">
-                Sigh out
-              </button>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </header>
-    <include src="./partials/main.html"></include>
-    <include src="./partials/pagination.html"></include>
-    <include src="./partials/footer.html"></include>
-    <include src="./partials/firebase-modal.html"></include>
-    <include src="./partials/modal.html"></include>
-    <include src="./partials/team-modal.html"></include>
-
+      </header>
+      <include src="./partials/main.html"></include>
+      <include src="./partials/pagination.html"></include>
+      <include src="./partials/footer.html"></include>
+      <include src="./partials/firebase-modal.html"></include>
+      <include src="./partials/modal.html"></include>
+    </div>
     <script type="module" src="./js/day_night.js"></script>
     <script type="module" src="./js/button-up.js"></script>
     <script type="module" src="./js/pagination.js"></script>

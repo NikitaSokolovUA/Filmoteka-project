@@ -1,4 +1,5 @@
 import renderFilmCard from './renderCard';
+import renderNotification from '../templates/renderNotification';
 import { queuedKeyStorage } from './queued-list';
 import FilmsPagination from './pagination';
 import Notiflix from 'notiflix';
@@ -16,11 +17,14 @@ export function loadQueuedFilms() {
   queuedListBtn.classList.add('active-js');
   filmList.innerHTML = '';
   const queuedFilms = JSON.parse(localStorage.getItem(queuedKeyStorage));
-  if (queuedFilms) {
-    renderFilmCard(queuedFilms.slice(0, 20), 'queue');
+
+  if (queuedFilms && queuedFilms.length > 0) {
+    renderFilmCard(queuedFilms.slice(0, 20));
+
     const paginator = new FilmsPagination(null, queuedFilms.length);
     paginator.pagination.on('afterMove', paginatePage);
   } else {
+    filmList.innerHTML = renderNotification();
     Notiflix.Notify.failure('No films in your queue!');
   }
 }
