@@ -5,6 +5,7 @@ import {
   removeWatchedBtnListener,
 } from './watched-list';
 import { loadWatchedFilms } from './library_watched';
+import { loadQueuedFilms } from './library_queued'
 import { addQueuedBtnListener, removeQueuedBtnListener } from './queued-list';
 
 const refs = {
@@ -14,6 +15,7 @@ const refs = {
   card: document.querySelector('.modal__container'),
   body: document.querySelector('body'),
 };
+let action = '';
 
 refs.listOfFilm.addEventListener('click', onClickFilmStorage);
 refs.closeModalBtn.addEventListener('click', onCloseModal);
@@ -21,29 +23,31 @@ refs.modal.addEventListener('click', onClickBackdropModalClose);
 
 
 
-  const allFilms = backListFromStorages()
+const allFilms = backListFromStorages()
 
 function onClickFilmStorage(e) {
   const chosenFilm = e.target.parentNode.parentNode;
+  action = chosenFilm.dataset.action
 
   const selectedFilm = allFilms.find(
     film => film.id === Number(chosenFilm.id)
   );
+  
 
    if (chosenFilm.nodeName !== 'LI') {
     return;
   }
 
   refs.card.innerHTML = renderModalCard(selectedFilm);
-  onOpenModal();
+  onOpenModal(chosenFilm.dataset.action);
 }
 
-function onOpenModal() {
+function onOpenModal(data) {
   window.addEventListener('keydown', inKeyDownEscModalClose);
   refs.modal.classList.toggle('backdrop--is-hidden');
   refs.body.classList.toggle('modal-open');
   addWatchedBtnListener();
-   addQueuedBtnListener();
+  addQueuedBtnListener();
 }
 
 function onCloseModal() {
@@ -52,7 +56,13 @@ function onCloseModal() {
   refs.body.classList.toggle('modal-open');
   removeWatchedBtnListener();
   removeQueuedBtnListener();
-  // loadWatchedFilms();
+  
+  if (action === "watched") {
+    loadWatchedFilms();
+  }
+  if (action === "queue") {
+    loadQueuedFilms() 
+  }
 }
 
 function onClickBackdropModalClose(event) {

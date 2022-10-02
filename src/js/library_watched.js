@@ -19,7 +19,7 @@ export function loadWatchedFilms() {
 
   const watchedFilms = JSON.parse(localStorage.getItem(watchedKeyStorage));
   if (watchedFilms) {
-    renderFilmCard(watchedFilms.slice(0, 20));
+    renderFilmCard(watchedFilms.slice(0, 20), 'watched');
     const paginator = new FilmsPagination(null, watchedFilms.length);
     paginator.pagination.on('afterMove', paginatePage);
   } else {

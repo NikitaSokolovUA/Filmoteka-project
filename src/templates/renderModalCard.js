@@ -2,7 +2,7 @@ import { isMovieOnList } from '../js/watched-list';
 import {isMovieOnListQue} from '../js/queued-list'
 const BASE_URL = 'https://image.tmdb.org/t/p/w500';
 
-export default function renderModalCard(film) {
+export default function renderModalCard(film, dataAtribute) {
   const {
     id,
     genres,
@@ -34,7 +34,7 @@ export default function renderModalCard(film) {
     poster =  `src = "https://upload.wikimedia.org/wikipedia/commons/4/43/Illustration_of_an_image.png"`
     } else poster = `src ="${BASE_URL}${poster_path}"`  
   
-  return `<div class="modal__image-container" id='${id}'>
+  return `<div class="modal__image-container" id='${id} data='${dataAtribute}'>
         <img
           class="modal__image"
           ${poster}
