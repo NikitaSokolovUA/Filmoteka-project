@@ -1,14 +1,21 @@
-import { loadQueuedFilms } from "./library_queued";
-import { loadWatchedFilms } from "./library_watched";
+import { loadQueuedFilms } from './library_queued';
+import { loadWatchedFilms } from './library_watched';
+import { spinner, target } from './spinner';
 
-checkLibrary()
+checkLibrary();
 
 function checkLibrary() {
-    const filmsWatched = localStorage.getItem('watchedKey');
+  const filmsWatched = localStorage.getItem('watchedKey');
 
-    if (filmsWatched) {
-        loadWatchedFilms()
-        return
-    }
-    loadQueuedFilms()
+  if (filmsWatched) {
+    spinner.spin(target);
+    setTimeout(() => {
+      loadWatchedFilms();
+      setTimeout(() => {
+        spinner.stop();
+      }, 300);
+    }, 1500);
+    return;
+  }
+  loadQueuedFilms();
 }
