@@ -21,6 +21,7 @@ export function loadWatchedFilms() {
   const watchedFilms = JSON.parse(localStorage.getItem(watchedKeyStorage));
   if (watchedFilms && watchedFilms.length > 0) {
     renderFilmCard(watchedFilms.slice(0, 20));
+
     const paginator = new FilmsPagination(null, watchedFilms.length);
     paginator.pagination.on('afterMove', paginatePage);
   } else {

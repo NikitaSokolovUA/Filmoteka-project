@@ -13,12 +13,14 @@ Notiflix.Notify.init({
 const queuedListBtn = document.querySelector('.queued-btn-js');
 const filmList = document.querySelector('.film__list');
 
-function loadQueuedFilms() {
+export function loadQueuedFilms() {
   queuedListBtn.classList.add('active-js');
   filmList.innerHTML = '';
   const queuedFilms = JSON.parse(localStorage.getItem(queuedKeyStorage));
+
   if (queuedFilms && queuedFilms.length > 0) {
     renderFilmCard(queuedFilms.slice(0, 20));
+
     const paginator = new FilmsPagination(null, queuedFilms.length);
     paginator.pagination.on('afterMove', paginatePage);
   } else {
