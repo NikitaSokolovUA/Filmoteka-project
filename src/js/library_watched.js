@@ -1,4 +1,5 @@
 import renderFilmCard from './renderCard';
+import renderNotification from '../templates/renderNotification';
 import { watchedKeyStorage } from './watched-list';
 import FilmsPagination from './pagination';
 import Notiflix from 'notiflix';
@@ -23,9 +24,9 @@ export function loadWatchedFilms() {
     const paginator = new FilmsPagination(null, watchedFilms.length);
     paginator.pagination.on('afterMove', paginatePage);
   } else {
-    filmList.innerHTML =
-      'You haven`t looked anything yet. Add movies to watch and let`s enjoy! :)';
+    filmList.innerHTML = renderNotification();
     Notiflix.Notify.failure('No films in your watched list!');
+    return
   }
 }
 
@@ -42,3 +43,4 @@ function paginatePage(event) {
   );
   renderFilmCard(films_array);
 }
+

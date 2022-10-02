@@ -1,4 +1,5 @@
 import renderFilmCard from './renderCard';
+import renderNotification from '../templates/renderNotification';
 import { queuedKeyStorage } from './queued-list';
 import FilmsPagination from './pagination';
 import Notiflix from 'notiflix';
@@ -21,8 +22,7 @@ function loadQueuedFilms() {
     const paginator = new FilmsPagination(null, queuedFilms.length);
     paginator.pagination.on('afterMove', paginatePage);
   } else {
-    filmList.innerHTML =
-      'You haven`t added anything yet. Add quickly, let`s enjoy! :)';
+    filmList.innerHTML = renderNotification();
     Notiflix.Notify.failure('No films in your queue!');
   }
 }
