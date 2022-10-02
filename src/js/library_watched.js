@@ -18,11 +18,13 @@ export function loadWatchedFilms() {
   filmList.innerHTML = '';
 
   const watchedFilms = JSON.parse(localStorage.getItem(watchedKeyStorage));
-  if (watchedFilms) {
+  if (watchedFilms && watchedFilms.length > 0) {
     renderFilmCard(watchedFilms.slice(0, 20));
     const paginator = new FilmsPagination(null, watchedFilms.length);
     paginator.pagination.on('afterMove', paginatePage);
   } else {
+    filmList.innerHTML =
+      'You haven`t looked anything yet. Add movies to watch and let`s enjoy! :)';
     Notiflix.Notify.failure('No films in your watched list!');
   }
 }
