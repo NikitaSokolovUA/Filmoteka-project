@@ -38,11 +38,11 @@ function onChangeTheme() {
     documentTuiIsSelected.classList.toggle('night-mode');
   }
   //
-  for (el of document.getElementsByClassName('film__title-main')) {
+  for (const el of document.getElementsByClassName('film__title-main')) {
     el.classList.toggle('night-mode');
   }
   //
-  for (el of document.getElementsByClassName('tui-page-btn')) {
+  for (const el of document.getElementsByClassName('tui-page-btn')) {
     el.classList.toggle('night-mode');
   }
 }
