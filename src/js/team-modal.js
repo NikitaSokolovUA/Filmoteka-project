@@ -5,6 +5,7 @@
     modal: document.querySelector('[data-team-modal]'),
   };
 
+
   refs.openModalBtn.addEventListener('click', toggleModal);
   refs.closeModalBtn.addEventListener('click', toggleModal);
 
