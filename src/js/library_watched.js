@@ -20,10 +20,11 @@ export function loadWatchedFilms() {
 
   const watchedFilms = JSON.parse(localStorage.getItem(watchedKeyStorage));
   if (watchedFilms && watchedFilms.length > 0) {
-    renderFilmCard(watchedFilms.slice(0, 20));
+    renderFilmCard(watchedFilms.slice(0, 20), 'watched');
 
     const paginator = new FilmsPagination(null, watchedFilms.length);
     paginator.pagination.on('afterMove', paginatePage);
+    return
   } else {
     filmList.innerHTML = renderNotification();
     Notiflix.Notify.failure('No films in your watched list!');

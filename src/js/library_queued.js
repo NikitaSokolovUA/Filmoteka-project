@@ -19,13 +19,15 @@ export function loadQueuedFilms() {
   const queuedFilms = JSON.parse(localStorage.getItem(queuedKeyStorage));
 
   if (queuedFilms && queuedFilms.length > 0) {
-    renderFilmCard(queuedFilms.slice(0, 20));
+    renderFilmCard(queuedFilms.slice(0, 20), 'queue');
 
     const paginator = new FilmsPagination(null, queuedFilms.length);
     paginator.pagination.on('afterMove', paginatePage);
+    return
   } else {
     filmList.innerHTML = renderNotification();
     Notiflix.Notify.failure('No films in your queue!');
+    return
   }
 }
 
