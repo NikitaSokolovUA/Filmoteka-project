@@ -4,6 +4,7 @@ import {
   addWatchedBtnListener,
   removeWatchedBtnListener,
 } from './watched-list';
+import Notiflix from 'notiflix';
 
 // імпорт для кнопки add to queue
 import { addQueuedBtnListener, removeQueuedBtnListener } from './queued-list';
