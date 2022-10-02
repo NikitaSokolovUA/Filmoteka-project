@@ -11,9 +11,7 @@ function checkLibrary() {
     spinner.spin(target);
     setTimeout(() => {
       loadWatchedFilms();
-      setTimeout(() => {
-        spinner.stop();
-      }, 300);
+      spinner.stop();
     }, 1500);
     return;
   }
