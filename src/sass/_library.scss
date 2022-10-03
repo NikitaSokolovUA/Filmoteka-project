@@ -125,3 +125,9 @@
     margin-left: 16px;
   }
 }
+
+
+.lib-btn__active{
+  background-color: $accent-color;
+  border: 1px solid $accent-color;
+}

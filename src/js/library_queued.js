@@ -11,12 +11,15 @@ Notiflix.Notify.init({
 });
 
 const queuedListBtn = document.querySelector('.queued-btn-js');
+const watchedListBtn = document.querySelector('.watched-btn-js');
 const filmList = document.querySelector('.film__list');
 const filmPagination = document.querySelector('.tui-pagination');
 
 export function loadQueuedFilms() {
   filmPagination.innerHTML = '';
   queuedListBtn.classList.add('active-js');
+  onActiveLoadQueue()
+
   filmList.innerHTML = '';
   const queuedFilms = JSON.parse(localStorage.getItem(queuedKeyStorage));
 
@@ -45,4 +48,10 @@ function paginatePage(event) {
     currentPage * 20
   );
   renderFilmCard(films_array);
+}
+
+
+function onActiveLoadQueue() {
+  watchedListBtn.classList.remove('lib-btn__active')
+  queuedListBtn.classList.add('lib-btn__active')
 }
