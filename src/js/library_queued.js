@@ -12,8 +12,10 @@ Notiflix.Notify.init({
 
 const queuedListBtn = document.querySelector('.queued-btn-js');
 const filmList = document.querySelector('.film__list');
+const filmPagination = document.querySelector('.tui-pagination');
 
 export function loadQueuedFilms() {
+  filmPagination.innerHTML = '';
   queuedListBtn.classList.add('active-js');
   filmList.innerHTML = '';
   const queuedFilms = JSON.parse(localStorage.getItem(queuedKeyStorage));
@@ -23,11 +25,11 @@ export function loadQueuedFilms() {
 
     const paginator = new FilmsPagination(null, queuedFilms.length);
     paginator.pagination.on('afterMove', paginatePage);
-    return
+    return;
   } else {
     filmList.innerHTML = renderNotification();
     Notiflix.Notify.failure('No films in your queue!');
-    return
+    return;
   }
 }
 
