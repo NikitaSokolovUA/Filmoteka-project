@@ -12,8 +12,10 @@ Notiflix.Notify.init({
 
 const watchedListBtn = document.querySelector('.watched-btn-js');
 const filmList = document.querySelector('.film__list');
+const filmPagination = document.querySelector('.tui-pagination');
 
 export function loadWatchedFilms() {
+  filmPagination.innerHTML = '';
   watchedListBtn.classList.add('active-js');
 
   filmList.innerHTML = '';
@@ -24,11 +26,11 @@ export function loadWatchedFilms() {
 
     const paginator = new FilmsPagination(null, watchedFilms.length);
     paginator.pagination.on('afterMove', paginatePage);
-    return
+    return;
   } else {
     filmList.innerHTML = renderNotification();
     Notiflix.Notify.failure('No films in your watched list!');
-    return
+    return;
   }
 }
 
@@ -45,4 +47,3 @@ function paginatePage(event) {
   );
   renderFilmCard(films_array);
 }
-

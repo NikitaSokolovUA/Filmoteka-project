@@ -26,6 +26,9 @@ async function onSearch(event) {
       warningText,
       40
     );
+    setTimeout(function () {
+      warningText.innerHTML = '';
+    }, 5000);
     return;
   }
 
@@ -40,6 +43,9 @@ async function onSearch(event) {
         warningText,
         40
       );
+      setTimeout(function () {
+        warningText.innerHTML = '';
+      }, 5000);
       return;
     }
 
