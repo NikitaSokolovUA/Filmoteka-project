@@ -39,7 +39,7 @@ body.modal-open {
   @include mq(tablet) {
     width: 704px;
     padding: 40px 72px 40px 36px;
-    min-height: 552px;
+    // min-height: 552px;
   }
 
   @include mq(desktop) {
